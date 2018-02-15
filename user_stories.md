@@ -1,5 +1,4 @@
 # Lo-fi Generator - MVP Stories and Basic Layout
-***
 (I was wrong, it is Low-Fidelity but the overall sound is with cut high frequencies)
 
 # Problem Domain:
@@ -12,9 +11,9 @@ JavaScript needs to then be able to effectively manipulate the DOM and html5 aud
 disrupt the user with anything that is jarring to remove the immersion of the playlist
 
 Use pre-fabricated samples to create the basic functionality and algorithms with the idea of scaling the project in the future
-
-# As per the final project requirements(Layout/Appearance):
 ***
+# As per the final project requirements(Layout/Appearance):
+
 ### Public Facing Page - 
 * Two buttons, when selected the appropriate folder of sounds is selected and played
 * Option between simple CSS visulizer or no visuals (default to CSS visulizer)
@@ -28,7 +27,6 @@ Use pre-fabricated samples to create the basic functionality and algorithms with
 ***
 
 # MVP Stories:
-***
 
 * As the user, I want to use a site that has a simple UI that immediately reacts to my selection
 * As the user, I want the transition between sounds to be seamless and not take me out of my immersion
@@ -37,6 +35,6 @@ Use pre-fabricated samples to create the basic functionality and algorithms with
 * As the developer, I want the CSS to be a simple experience but also reflect the selection of the user
 * As the developer, I want datasets that are relative to each other so that the audio flies that are played, mix together
 * As the developer, I want the files to be loaded and ready without the users knowledge
-
+***
 
 
