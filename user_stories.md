@@ -4,7 +4,7 @@
 # Problem Domain:
 
 To create a website that present the user with a simple two button selection. One button will have the selection of Harmony and the second button
-will have the selection of Chaos. After the user makes a selection, javascript is then directed to the appropriate directory to begin play the audio
+will have the selection of Chaos. After the user makes a selection, javascript is then directed to the appropriate directory to begin playing the audio
 files in that directory.
 
 JavaScript needs to then be able to effectively manipulate the DOM and html5 audio player to play, loop and fade in between different files as to not
