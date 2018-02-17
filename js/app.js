@@ -4,18 +4,27 @@
 //needs global variables that will affect variables inside functions
 //needs local storage (For volume and selection)
 
-var audio = document.getElementById('channelA');
-audio.volume = 0;
+var chan1 = document.getElementById('channelA');
+chan1.volume = 0;
 
 function audioFade() {
-  audio.play();
+  chan1.play();
   var fade = setInterval(function () {
-    if(audio.currentTime < 10) {
-      audio.volume += 0.02;
-      console.log(audio.volume);
-      if(audio.volume > 0.96) audio.volume = 1;
+    if(chan1.currentTime < 10) {
+      chan1.volume += 0.02;
+      console.log(chan1.volume);
+      if(chan1.volume > 0.96) chan1.volume = 1;
     }
-    if(audio.volume === 1) clearInterval(fade);
+    if(chan1.volume === 1) clearInterval(fade);
   }, 200);
 }
+chan1.ontimeupdate = setInterval(function () {
+  if(chan1.currentTime >= chan1.duration-10) {
+    chan1.volume -= 0.02;
+    console.log(chan1.volume);
+    if(chan1.volume < 0.02) chan1.volume = 0;
+  }
+  if(chan1.volume === 0) clearInterval(chan1);
+}, 200);
+
 audioFade();
