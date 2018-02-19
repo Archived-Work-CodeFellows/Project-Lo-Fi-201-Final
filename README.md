@@ -11,7 +11,7 @@ Please read [Creating a Pull Request](https://help.github.com/articles/creating
 
 ## Author
 David Johnson
-Bryan B
+Bryan Brinson
 Eric Singleton 
 
 ## License
