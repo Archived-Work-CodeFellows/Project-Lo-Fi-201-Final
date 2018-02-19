@@ -1,8 +1,42 @@
-#harmony, #chaos {
-cursor: pointer;
+header {
+    height: 250px;
+    background: #3d4045;
+    color: #ffffff;
 }
 
-harmony:hover, #chaos:hover {
-    transform: scale(1.7,1.7);
-    transition: .3s transform;
+h2 {
+    font-size: 45px;
+    line-height: 50px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    border-color: white;
+}
+
+#wrapper { 
+    width: 100%; 
+    height: auto; 
+} 
+#harmony { 
+    width: 50%; 
+    height: auto; 
+    float: left;
+} 
+
+#chaos { 
+    width: 50%; 
+    height: auto; 
+    float: left;
+}
+
+.clear{
+    clear: both;
+}
+
+footer {
+    height: 250px;
 }
