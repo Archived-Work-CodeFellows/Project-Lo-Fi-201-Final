@@ -3,5 +3,6 @@ cursor: pointer;
 }
 
 harmony:hover, #chaos:hover {
-
+    transform: scale(1.7,1.7);
+    transition: .3s transform;
 }
