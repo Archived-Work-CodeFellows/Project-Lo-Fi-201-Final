@@ -11,7 +11,9 @@ Please read [Creating a Pull Request](https://help.github.com/articles/creating
 
 ## Author
 David Johnson
+
 Bryan Brinson
+
 Eric Singleton 
 
 ## License
@@ -19,6 +21,8 @@ This project is licensed under the MIT License
 
 ## Acknowledgments
 GitHub user PurpleBooth for providing README Template
+
 [W3schools.com](https://www.w3schools.com/) for CSS concepts
+
 [MDN](https://developer.mozilla.org/en-US/) for documentation  
 
