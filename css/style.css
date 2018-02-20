@@ -1,0 +1,65 @@
+header {
+    height: 250px;
+    background: #3d4045;
+    color: #ffffff;
+    padding-bottom: 50px;
+
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 20px;
+}
+
+h2 {
+    font-size: 45px;
+    line-height: 50px;
+}
+
+p {
+    font-size: 20px;
+}
+
+button {
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 15px;
+    background: #3d4045;
+}
+
+#wrapper { 
+    width: 100%; 
+    height: auto; 
+}
+
+a {
+    cursor: pointer;
+}
+
+#harmony { 
+    width: 50%; 
+    height: auto; 
+    float: left;
+    background: #3d4045;
+}
+
+#harmony:hover {
+    transform: scale(1.7,1.7);
+    transition: .3s transform;
+    background: #3d4045;
+}
+
+#chaos { 
+    width: 50%; 
+    height: auto; 
+    float: left;
+}
+
+footer {
+    clear: both;
+    height: 250px;
+    background-color: #3d4045;
+}
+
