@@ -2,6 +2,14 @@ header {
     height: 250px;
     background: #3d4045;
     color: #ffffff;
+    padding-bottom: 50px;
+
+}
+
+nav ul li {
+    list-style-type: none;
+    display: inline;
+    padding: 20px;
 }
 
 h2 {
@@ -14,13 +22,22 @@ p {
 }
 
 button {
-    border-color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 1px solid white;
+    padding: 15px;
+    background: #3d4045;
 }
 
 #wrapper { 
     width: 100%; 
     height: auto; 
-} 
+}
+
+a {
+    cursor: pointer;
+}
+
 #harmony { 
     width: 50%; 
     height: auto; 
@@ -33,10 +50,8 @@ button {
     float: left;
 }
 
-.clear{
-    clear: both;
-}
-
 footer {
+    clear: both;
     height: 250px;
+    background-color: #3d4045;
 }
