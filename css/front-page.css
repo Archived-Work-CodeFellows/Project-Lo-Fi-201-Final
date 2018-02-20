@@ -42,7 +42,14 @@ a {
     width: 50%; 
     height: auto; 
     float: left;
-} 
+    background: #3d4045;
+}
+
+#harmony:hover {
+    transform: scale(1.7,1.7);
+    transition: .3s transform;
+    background: #3d4045;
+}
 
 #chaos { 
     width: 50%; 
@@ -55,3 +62,4 @@ footer {
     height: 250px;
     background-color: #3d4045;
 }
+
