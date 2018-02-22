@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>My Profile</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <script src="https://js.stripe.com/v3/"></script>
+
+</head>
+
+<body>
+    <header>
+        <main>
+            <section id="contact-preferences">
+                <!-- <input type="text" name="First Name">
+                <input type="text" name="Last Name">
+                <input type="text" name="EMail Address"> -->
+            </section>
+            <section id="mood-preferences">
+            </section>
+            <section id="billing-information">
+                <form action="your-server-side-code" method="POST">
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_x9tLo6pYrejE9YysXzjxzzRI" data-amount="999"
+                        data-name="Demo Site" data-description="Example charge" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto">
+                    </script>
+                </form>
+            </section>
+            <section id="listening-history">
+            </section>
+        </main>
+        <footer>
+        </footer>
+        <!-- <script src="js/user-profile.js"></script> -->
+</body>
+
+</html>
