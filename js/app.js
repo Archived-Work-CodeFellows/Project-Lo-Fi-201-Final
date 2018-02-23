@@ -9,61 +9,74 @@ var harmonySelector = document.getElementById('harmony');
 var chan1 = document.getElementById('channelA');
 var chan2 = document.getElementById('channelB');
 var chanSelector = 0;
+var flagCheck = 0;
 
 chan1.volume = 0;
 chan2.volume = 0;
 
-harmonySelector.addEventListener('click', audioPlay);
+harmonySelector.addEventListener('click', start);
 
-function audioPlay(){
+setInterval(function(){
+  console.log(flagCheck);
+  if(flagCheck === 1) {
+    channelAfade();
+  } else if (flagCheck === 2) {
+    channelBfade();
+  }
+}, 250);
+
+function start () {
   chan1.play();
-  chan1.onplay = function() {
-    var fade = setInterval(function () {
-      if(chan1.currentTime < 10 && chan1.volume !== 1) {
-        chan1.volume += 0.001;
-        console.log(chan1.volume);
-        if(chan1.volume > 0.96) {
-          chan1.volume = 1;
-          chanSelector = 0;
-        }
-      }
-      if(chan1.volume === 1 || chan1.paused === true) clearInterval(fade);
-    }, 5);
-  };
-  chan1.ontimeupdate = fadeOut;
-  var fadeOut = setInterval(function () {
-    if(chan1.currentTime > chan1.duration-10 && !chan1.ended) {
-      chan2.play();
-      chan1.volume -= 0.003;
-      chan2.volume += 0.003;
-      console.log(chan2.volume);
-      if(chan2.volume > 0.96) {
-        chan1.volume = 0;
-        chan2.volume = 1;
-        chanSelector = 1;
-        clearInterval(fadeOut);
-      }
-    }
-    //if(chan1.volume === 0 || chan2.volume === 1) clearInterval(fadeOut);
-  }, 25);
-
-  var fadeOut2 = setInterval(function() {
-    if(chan2.currentTime > chan2.duration-10 && !chan2.ended) {
-      chan1.play();
-      chan2.volume -= 0.003;
-      //chan1.volume += 0.003;
-      console.log(chan1.volume);
+  var start = setInterval(function () {
+    if(chan1.currentTime < 10 && chan1.volume !== 1) {
+      chan1.volume += 0.001;
       if(chan1.volume > 0.96) {
-        chan2.volume = 0;
         chan1.volume = 1;
         chanSelector = 0;
-        clearInterval(fadeOut2);
       }
     }
-  }, 15);
-
-  chan2.ontimeupdate = fadeOut2;
+    if(chan1.volume === 1 || chan1.paused === true) {
+      flagCheck = 1;
+      clearInterval(start);
+    }
+  }, 5);
+  return flagCheck;
 }
+
+function channelAfade () {
+  if(chan1.currentTime > chan1.duration-10 && !chan1.ended) {
+    chan2.play();
+    while(chan2.volume < 0.96) {
+      chan1.volume -= 0.001;
+      chan2.volume += 0.001;
+    }
+    if(chan2.volume > 0.96) {
+      chan1.volume = 0;
+      chan2.volume = 1;
+      chanSelector = 0;
+      flagCheck = 2;
+    }
+    return flagCheck;
+  }
+}
+
+function channelBfade() {
+  if(chan2.currentTime > chan2.duration-10 && !chan2.ended) {
+    chan1.play();
+    while(chan1.volume < 0.96){
+      chan2.volume -= 0.001;
+      chan1.volume += 0.001;
+    }
+    if(chan1.volume > 0.96) {
+      chan2.volume = 0;
+      chan1.volume = 1;
+      chanSelector = 1;
+      flagCheck = 1;
+    }
+  }
+  return flagCheck;
+}
+
 document.body.onkeyup = function(event){
   switch(chanSelector) {
   case 1:
