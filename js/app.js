@@ -46,10 +46,12 @@ function start () {
 function channelAfade () {
   if(chan1.currentTime > chan1.duration-10 && !chan1.ended) {
     chan2.play();
-    while(chan2.volume < 0.96) {
-      chan1.volume -= 0.001;
-      chan2.volume += 0.001;
-    }
+    var fade = setInterval(function(){
+      if(chan2.volume < 0.96){
+        chan1.volume -= 0.001;
+        chan2.volume += 0.001;
+      } else clearInterval(fade);
+    }, 30);
     if(chan2.volume > 0.96) {
       chan1.volume = 0;
       chan2.volume = 1;
@@ -63,10 +65,12 @@ function channelAfade () {
 function channelBfade() {
   if(chan2.currentTime > chan2.duration-10 && !chan2.ended) {
     chan1.play();
-    while(chan1.volume < 0.96){
-      chan2.volume -= 0.001;
-      chan1.volume += 0.001;
-    }
+    var fade = setInterval(function(){
+      if(chan1.volume < 0.96){
+        chan2.volume -= 0.001;
+        chan1.volume += 0.001;
+      } else clearInterval(fade);
+    }, 30);
     if(chan1.volume > 0.96) {
       chan2.volume = 0;
       chan1.volume = 1;
