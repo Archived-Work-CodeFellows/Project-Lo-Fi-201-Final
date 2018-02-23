@@ -1,11 +1,8 @@
-/* * {
-    border: 2px solid hotpink;
-} */
-
 body {
     font-family: Arial,Helvetica,sans-serif;
     margin: 0px;
 }
+
 header {
     height: 100px;
     background-color: #20303c;
@@ -59,10 +56,36 @@ a {
     cursor: pointer;
 }
 
-video {
-    width: 450px;
+div:nth-child(3), div:nth-child(4) {
+    margin-top: 100px;
+    margin-left: 100px
 }
 
-footer {
-    height: 250px;
+div:nth-child(5) {
+    background: lightgrey;
+    height: 500px;
 }
+
+video {
+    width: 450px;
+    margin-left: 50px;
+    transition: all .2s ease-in-out; 
+}
+
+video:hover {
+    transform: scale(1.2); 
+} 
+
+p:first-of-type {
+    display: inline-block;
+    width: 300px;
+}
+
+footer ul li{
+   padding:0px 100px 0px 100px;
+
+}
+
+p:nth-child(2) {
+     color: #AD7B67;
+ }
