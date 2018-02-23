@@ -17,7 +17,6 @@ chan2.volume = 0;
 harmonySelector.addEventListener('click', start);
 
 setInterval(function(){
-  console.log(flagCheck);
   if(flagCheck === 1) {
     channelAfade();
   } else if (flagCheck === 2) {
