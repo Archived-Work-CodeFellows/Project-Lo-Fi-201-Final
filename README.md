@@ -1,8 +1,6 @@
 # Project-Lo-Fi
 Generates random music files and creates lofi music for background sounds similar to white noise or rain websites for relaxing or studying.
 
-## Motivation
-
 ## Built With
 HTML/CSS, JavaScript
 
