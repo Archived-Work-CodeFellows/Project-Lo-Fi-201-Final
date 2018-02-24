@@ -53,19 +53,16 @@ function uuid() {
         document.getElementById('signUp').style.display = 'inline';
       }
 
-      // statusElement.appendChild(statusText);
-      // authStatus.appendChild(statusElement);
-
 
 
     });
   } else {
-    statusText = document.createTextNode('Your are not signed in.');
-    statusElement.appendChild(statusText);
-    authStatus.appendChild(statusElement);
+    // statusText = document.createTextNode('Your are not signed in.');
+    // statusElement.appendChild(statusText);
+    // authStatus.appendChild(statusElement);
     document.getElementById('signIn').style.display = 'inline';
     document.getElementById('signUp').style.display = 'inline';
-}
+  }
 
 })();
 
@@ -84,7 +81,7 @@ function signOut() {
     cognitoUser.signOut();
   }
 
-  location.reload();
+  window.location.reload();
 }
 
 
@@ -142,7 +139,7 @@ var authenticateUser = function (emailAddress, password) {
 
       /*Use the idToken for Logins Map when Federating User Pools with Cognito Identity or when passing through an Authorization Header to an API Gateway Authorizer*/
       console.log('idToken + ' + result.idToken.jwtToken);
-      location.reload();      
+      window.location.reload();
     },
 
     onFailure: function (err) {
@@ -153,10 +150,7 @@ var authenticateUser = function (emailAddress, password) {
 
 };
 
-
-
 document.getElementById('createNewUser').addEventListener('click', function () {
-
   var form = document.querySelector('#signUpForm');
 
   var emailAddressValue = form.elements.emailAddress.value;
@@ -169,9 +163,7 @@ document.getElementById('createNewUser').addEventListener('click', function () {
 });
 
 
-
 document.getElementById('authenticateUser').addEventListener('click', function () {
-
   var form = document.querySelector('#signInForm');
 
   var emailAddressValue = form.elements.emailAddress.value;
@@ -185,17 +177,17 @@ document.getElementById('authenticateUser').addEventListener('click', function (
 
 
 // Sign Up Modal management
-var signUpBtn = document.getElementById('signUp');
+var signUpLink = document.getElementById('signUp');
 var signUpModal = document.getElementById('signUpModal');
 
-var signInBtn = document.getElementById('signIn');
+var signInLink = document.getElementById('signIn');
 var signInModal = document.getElementById('signInModal');
 
-signInBtn.onclick = function () {
+signInLink.onclick = function () {
   signInModal.style.display = 'block';
 };
 
-signUpBtn.onclick = function () {
+signUpLink.onclick = function () {
   signUpModal.style.display = 'block';
 };
 
@@ -223,9 +215,11 @@ window.onclick = function (event) {
   }
 };
 
-
 document.getElementById('signOut').addEventListener('click', function () {
-
-  signOut(emailAddress);
-
+  signOut();
 });
+
+document.getElementById('myProfile').addEventListener('click', function () {
+  window.location.href = 'pages/user-profile.html';
+});
+
