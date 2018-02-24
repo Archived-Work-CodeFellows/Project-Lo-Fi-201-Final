@@ -21,7 +21,6 @@ function uuid() {
   });
 }
 
-
 (function isAuthenticated() {
 
   var data = {
@@ -32,8 +31,8 @@ function uuid() {
   var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(data);
   var cognitoUser = userPool.getCurrentUser();
 
-  var authStatus = document.getElementById('authStatus');
-  var statusElement = document.createElement('h1');
+  var authStatus = document.getElementById('music-studio');
+  var statusElement = document.createElement('H1');
   var statusText;
 
   if (cognitoUser !== null) {
@@ -46,20 +45,26 @@ function uuid() {
 
       if (session.isValid()) {
         statusText = document.createTextNode('Welcome back. You are currently signed in.');
+        document.getElementById('signOut').style.display = 'inline';
       } else {
         statusText = document.createTextNode('You are session is not valid. Please sign in again.');
+        document.getElementById('signIn').style.display = 'inline';
+        document.getElementById('signUp').style.display = 'inline';
       }
 
-      statusElement.appendChild(statusText);
-      authStatus.appendChild(statusText);
+      // statusElement.appendChild(statusText);
+      // authStatus.appendChild(statusElement);
+
+
 
     });
   } else {
     statusText = document.createTextNode('Your are not signed in.');
-
     statusElement.appendChild(statusText);
-    authStatus.appendChild(statusText);
-  }
+    authStatus.appendChild(statusElement);
+    document.getElementById('signIn').style.display = 'inline';
+    document.getElementById('signUp').style.display = 'inline';
+}
 
 })();
 
@@ -216,7 +221,6 @@ window.onclick = function (event) {
     signUpModal.style.display = 'none';
   }
 };
-
 
 
 document.getElementById('signOut').addEventListener('click', function () {

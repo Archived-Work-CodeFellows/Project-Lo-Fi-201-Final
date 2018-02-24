@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="tab icon" href="img/tab-icon.jpg"/>
+   
     <link rel"stylesheet" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="css/modal.css">
+
+    <script src="js/aws-cognito-sdk.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+
     <title>Project Lo-Fi</title>
 </head>
 <body>
@@ -20,8 +26,9 @@
             <ul>
                 <li>Home</li>
                 <li>Artists</li>
-                <li>Log In</li>
-                <li>Sign Up</li>
+                <li id ="signIn" class="hide">Sign In</li>
+                <li id="signUp" class="hide">Sign Up</li>
+                <li id="signOut" class="hide">Sign Out</li>
             </ul>
         </nav>
     </header>
@@ -68,6 +75,52 @@
         <p>&copy 2018 Project Lo-Fi</p>
     </footer>
 
+    <div id="signInModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span id="signInClose" class="close">&times;</span>
+            <form id="signInForm">
+                <fieldset>
+                    <legend>Sign In</legend>
+                    <label for="emailAddress">Email Address</label>
+                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
+
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
+                </fieldset>
+                <button id="authenticateUser" class="button" type="button">
+                    Sign me in!
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <div id="signUpModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span id="signUpClose" class="close">&times;</span>
+            <form id="signUpForm">
+                <fieldset>
+                    <legend>Let's get started</legend>
+                    <label for="givenName">What should we call you?</label>
+                    <input id="givenName" type="text" name="givenName" size="30" maxlength="100" required>
+
+                    <label for="emailAddress">What's your email address?</label>
+                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
+
+                    <label for="password">Give us a nice, clear text password!</label>
+                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
+
+                </fieldset>
+                <button id="createNewUser" class="button" type="button">
+                    Sign me up!
+                </button>
+            </form>
+        </div>
+    </div>
+
+
     <script src="js/placeholder.js"></script>
+    <script src="js/profileManager.js"></script>
 </body>
 </html>
