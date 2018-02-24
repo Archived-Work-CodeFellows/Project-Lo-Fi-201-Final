@@ -12,9 +12,9 @@ function uuid() {
   });
 }
 
-function UserProfile(uuid, firstName, lastName, emailAddress, unencryptedNeverDoThisOutsideOfClassPassword) {
+function UserProfile(uuid, firstName, lastName, emailAddress, passw0rd) {
   this.uuid = uuid;
-  this.unencryptedNeverDoThisOutsideOfClassPassword = unencryptedNeverDoThisOutsideOfClassPassword;
+  this.passw0rd = passw0rd;
   this.firstName = firstName;
   this.lastName = lastName;
   this.emailAddress = emailAddress;
@@ -50,13 +50,13 @@ function noAccountOrBadPassword() {
 
 (function initUserProfiles() {
   if (localStorage.userProfiles) {
-      // if some localStorage already exists, use it
+    // if some localStorage already exists, use it
     UserProfile.profileArray = (JSON.parse(localStorage.getItem('userProfiles')));
   } else {
-      // otherwise make fake data and store it locally
-    new UserProfile(uuid(),'Bryan', 'Brinson', 'bryan@beb.com',parseInt(123,10));
-    new UserProfile(uuid(),'David', 'Johnson', 'a@b.com',parseInt(123,10));
-    new UserProfile(uuid(),'Eric', 'Singleton', 'b@c.com',parseInt(123,10));
+    // otherwise make fake data and store it locally
+    new UserProfile(uuid(), 'Bryan', 'Brinson', 'bryan@beb.com', parseInt(123, 10));
+    new UserProfile(uuid(), 'David', 'Johnson', 'a@b.com', parseInt(123, 10));
+    new UserProfile(uuid(), 'Eric', 'Singleton', 'b@c.com', parseInt(123, 10));
 
     var userProfilesString = JSON.stringify(UserProfile.profileArray);
     localStorage.setItem('userProfiles', userProfilesString);
@@ -66,26 +66,20 @@ function noAccountOrBadPassword() {
   var userEmail = prompt('Enter email address (a@b.com)');
   var password = parseInt(prompt('Enter a password'));
 
+  var userFound = false;
   // what i wouldn't do for a proper database select here...
-  for (let i = 0; i < UserProfile.profileArray.length; i++ ) {
-    if (UserProfile.profileArray[i].emailAddress.toLowerCase() === userEmail.toLowerCase()) {
-      if (UserProfile.profileArray[i].unencryptedNeverDoThisOutsideOfClassPassword === password) {
-        currentUser = UserProfile.profileArray[i];
-
-        var userObjString = JSON.stringify(UserProfile.profileArray[i]);
-        localStorage.setItem('currentUser', userObjString);
-        displayContent();
-        
-      } else {
-        // found account, but bad password.
-        noAccountOrBadPassword();
-        break;
-      }
+  for (let i = 0; i < UserProfile.profileArray.length; i++) {
+    if (UserProfile.profileArray[i].emailAddress.toLowerCase() === userEmail.toLowerCase() && (UserProfile.profileArray[i].passw0rd === password)) {
+      userFound = true;
+      displayContent();
+      break;
     }
   }
-  alert ('bad username or password. try again.');
+
+  if (userFound === false) {
+    noAccountOrBadPassword();
+  }
 
 })();
 
 // add click event for logout and delete the currentUser object from localstorage
-

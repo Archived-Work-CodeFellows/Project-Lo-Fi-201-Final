@@ -1,0 +1,45 @@
+<html>
+
+<head>
+    <script src="js/aws-cognito-sdk.min.js"></script>
+    <script src="js/amazon-cognito-identity.min.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <button id="signUp">Sign Up</button>
+
+    <div id="signUpModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <form>
+                <fieldset>
+                    <legend>Let's get started</legend>
+                    <label for="givenName">What should we call you?</label>
+                    <input id="givenName" type="text" name="givenName" size="30" maxlength="100" required>
+
+                    <label for="emailAddress">What's your email address?</label>
+                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
+
+                    <label for="password">Give us a nice, clear text password!</label>
+                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
+
+                </fieldset>
+                <button id="createNewUser" class="button" type="button">
+                    Sign me up!
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+
+
+    <script src="js/signup.js"></script>
+</body>
+
+</html>
