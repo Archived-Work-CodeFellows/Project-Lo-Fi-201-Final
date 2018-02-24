@@ -84,10 +84,6 @@ a {
 }
 .bio {
     position: absolute;
-    top: inherit;
-    bottom: inherit;
-    left: inherit;
-    right: inherit;
     width: 300px;
     height: 225px;
     opacity: 0;
