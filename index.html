@@ -43,12 +43,19 @@
 
         <p>Productize fire up your browser, but moving the goalposts, blue sky thinking helicopter view, so where do we stand on the latest client ask. Bells and whistles hit the ground running organic growth.</p>
 
-        <a><video onmouseover="PlaySound('mySound')" 
-            onmouseout="StopSound('mySound')" autoplay loop>
+        <!-- <a><video onmouseover="PlaySound('mySound')" 
+            onmouseout="StopSound('mySound')" autoplay loop> -->
+            <a><video id="harmonic" autoplay loop>
             <source type="video/mp4" src="video/harmony/harmony.mp4">
         </video></a>
-
-        <audio id='mySound' src="audio/harmony/harmony_1.mp3"/>
+        <!-- <button id="harmonic">Harmony</button> -->
+        <audio id="channelA">
+            <source src="">
+        </audio>
+        <audio id="channelB">
+            <source src="">
+        </audio>
+        <!-- <audio id='mySound' src="audio/harmony/harmony_1.mp3"/> -->
 
     </div>
     <!--placeholder for div background image-->
@@ -57,9 +64,16 @@
 
         <p>Helicopter view. Three-martini lunch we don't want to boil the ocean core competencies, but this is meaningless and this is meaningless we need a paradigm shift, so value prop.</p>
 
-        <a><video autoplay loop>
+        <a><video id="chaotic" autoplay loop>
             <source type="video/mp4" src="video/chaos/chaos.mp4">
-        </video></a>    
+        </video></a>
+        <!-- <button id="chaotic">Chaos</button> -->
+        <audio id="channelC">
+            <source src="">
+        </audio>
+        <audio id="channelD">
+            <source src="">
+        </audio>   
     </div>
 
     <div id="before-footer">
@@ -122,7 +136,7 @@
 
 
     <script src="js/placeholder.js"></script>
-
+    <script src="js/app.js"></script>
     <script src="js/index.js"></script>
     <script src="js/profileManager.js"></script>
 
