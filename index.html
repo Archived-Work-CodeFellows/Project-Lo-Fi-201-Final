@@ -24,12 +24,12 @@
         
         <nav>
             <ul>
-                <li>Home</li>
-                <li>Artists</li>
+                <li id="home">Home</li>
+                <li id="artists">Artists</li>
                 <li id ="signIn" class="hide">Sign In</li>
                 <li id="signUp" class="hide">Sign Up</li>
-                <li id="signOut" class="hide">Sign Out</li>
                 <li id="myProfile" class="hide">My Profile</li>
+                <li id="signOut" class="hide">Sign Out</li>
             </ul>
         </nav>
     </header>
@@ -103,14 +103,14 @@
             <form id="signUpForm">
                 <fieldset>
                     <legend>Let's get started</legend>
-                    <label for="givenName">What should we call you?</label>
+                    <label for="givenName">First Name</label>
                     <input id="givenName" type="text" name="givenName" size="30" maxlength="100" required>
 
-                    <label for="emailAddress">What's your email address?</label>
+                    <label for="emailAddress">Email Address</label>
                     <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
 
-                    <label for="password">Give us a nice, clear text password!</label>
-                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" size="30" maxlength="100" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 
                 </fieldset>
                 <button id="createNewUser" class="button" type="button">
@@ -122,6 +122,9 @@
 
 
     <script src="js/placeholder.js"></script>
+
+    <script src="js/index.js"></script>
     <script src="js/profileManager.js"></script>
+
 </body>
 </html>
