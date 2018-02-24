@@ -1,65 +1,91 @@
-header {
-    height: 250px;
-    background: #3d4045;
-    color: #ffffff;
-    padding-bottom: 50px;
-
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    margin: 0px;
 }
 
-nav ul li {
+header {
+    height: 100px;
+    background-color: #20303c;
+    transition: color 0.4s ease 0s;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+header div img {
+    width: 100px;
+    margin: 0px 0px 10px 20px;
+    float:left;
+}
+
+h1 {
+    float: left;
+    margin-top: 35px;
+    color: lightgray;
+}
+
+nav {
+    float: right;
+}
+
+ul li {
     list-style-type: none;
     display: inline;
     padding: 20px;
+    color: #AD7B67;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
-h2 {
-    font-size: 45px;
-    line-height: 50px;
+ul li:hover {
+    color: #B7CBBF;
+    transition: color 0.4s ease 0s; 
 }
 
-p {
-    font-size: 20px;
-}
-
-button {
-    font-size: 20px;
-    border-radius: 10px;
-    border: 1px solid white;
-    padding: 15px;
-    background: #3d4045;
-}
-
-#wrapper { 
-    width: 100%; 
-    height: auto; 
+#music-studio {
+    background-image: url("../img/music-studio.jpg");
+    width: 100%;
+    height: 600px;
+    opacity: 0.6;
+    margin-bottom: 50px;
 }
 
 a {
     cursor: pointer;
 }
 
-#harmony { 
-    width: 50%; 
-    height: auto; 
-    float: left;
-    background: #3d4045;
+#harmony, #chaos {
+    margin: 50px 0px 50px 100px;
 }
 
-#harmony:hover {
-    transform: scale(1.7,1.7);
-    transition: .3s transform;
-    background: #3d4045;
+#before-footer {
+    background: lightgrey;
+    height: 500px;
 }
 
-#chaos { 
-    width: 50%; 
-    height: auto; 
-    float: left;
+video {
+    width: 450px;
+    margin-left: 50px;
+    transition: all .2s ease-in-out; 
 }
 
-footer {
-    clear: both;
-    height: 250px;
-    background-color: #3d4045;
+video:hover {
+    transform: scale(1.2); 
+} 
+
+#harmony p, #chaos p {
+    display: inline-block;
+    width: 300px;
 }
 
+footer ul li{
+   padding:0px 100px 0px 100px;
+
+}
+
+footer p {
+     color: #AD7B67;
+     text-align: center;
+ }

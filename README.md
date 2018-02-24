@@ -1,8 +1,6 @@
 # Project-Lo-Fi
 Generates random music files and creates lofi music for background sounds similar to white noise or rain websites for relaxing or studying.
 
-## Motivation
-
 ## Built With
 HTML/CSS, JavaScript
 
@@ -25,4 +23,6 @@ GitHub user PurpleBooth for providing README Template
 [W3schools.com](https://www.w3schools.com/) for CSS concepts
 
 [MDN](https://developer.mozilla.org/en-US/) for documentation  
+
+[Freesound.org](https://www.freesound.org/) for the chaos tracks all licensed under Creative Commons 0
 
