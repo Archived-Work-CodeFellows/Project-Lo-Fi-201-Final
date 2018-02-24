@@ -4,10 +4,12 @@
 //event function for spacebar to play audio, switch between the two playing channels
 //needs local storage (For volume and selection)
 
-var harmonySelector = document.getElementById('harmony');
+var harmonySelector = document.getElementById('harmonic');
 var chan1 = document.getElementById('channelA');
 var chan2 = document.getElementById('channelB');
-var chanSelector = 0;
+var compare = null;
+Audio_src.all = [];
+var moodSelector = ' ';
 var flagCheck = 0;
 var userVolume = 0.96; //For algorithm purposes
 
@@ -15,6 +17,36 @@ chan1.volume = 0;
 chan2.volume = 0;
 
 harmonySelector.addEventListener('click', start);
+
+function Audio_src(trackNum){
+  this.chan1 = chan1;
+  this.chan2 = chan2;
+  this.harmonyPath = 'audio/harmony/harmony_'+trackNum+'.mp3';
+  this.chaosPath = 'audio/chaos/chaos_'+trackNum+'.mp3';
+  Audio_src.all.push(this);
+}
+for(var i = 1; i < 5; i++) new Audio_src(i);
+
+function setRandomA() {
+  console.log('random chan1');
+  do {
+    var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
+    console.log(indexRandom);
+  } while (compare === indexRandom);
+  chan1.setAttribute('src', Audio_src.all[indexRandom].harmonyPath);
+  return compare = indexRandom;
+}
+function setRandomB() {
+  console.log('random chan2');
+  do {
+    var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
+    console.log(indexRandom);
+  } while (compare === indexRandom);
+  chan2.setAttribute('src', Audio_src.all[indexRandom].harmonyPath);
+  return compare = indexRandom;
+}
+setRandomA();
+setRandomB();
 
 setInterval(function(){
   if(flagCheck === 1) {
@@ -24,6 +56,8 @@ setInterval(function(){
   }
 }, 250);
 
+
+
 function start () {
   chan1.play();
   var start = setInterval(function () {
@@ -31,7 +65,6 @@ function start () {
       chan1.volume += 0.001;
       if(chan1.volume > userVolume) {
         chan1.volume = 1;
-        chanSelector = 0;
       }
     }
     if(chan1.volume === 1 || chan1.paused === true) {
@@ -54,7 +87,7 @@ function channelAfade () {
     if(chan2.volume > userVolume) {
       chan1.volume = 0;
       chan2.volume = 1;
-      chanSelector = 0;
+      setRandomA();
       flagCheck = 2;
     }
     return flagCheck;
@@ -73,7 +106,7 @@ function channelBfade() {
     if(chan1.volume > userVolume) {
       chan2.volume = 0;
       chan1.volume = 1;
-      chanSelector = 1;
+      setRandomB();
       flagCheck = 1;
     }
   }
