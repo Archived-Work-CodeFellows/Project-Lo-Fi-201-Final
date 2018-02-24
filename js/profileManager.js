@@ -46,6 +46,7 @@ function uuid() {
       if (session.isValid()) {
         statusText = document.createTextNode('Welcome back. You are currently signed in.');
         document.getElementById('signOut').style.display = 'inline';
+        document.getElementById('myProfile').style.display = 'inline';
       } else {
         statusText = document.createTextNode('You are session is not valid. Please sign in again.');
         document.getElementById('signIn').style.display = 'inline';
