@@ -1,5 +1,5 @@
 'use strict';
-debugger;
+// debugger;
 
 // Cognito init
 AWSCognito.config.region = 'us-west-2';
