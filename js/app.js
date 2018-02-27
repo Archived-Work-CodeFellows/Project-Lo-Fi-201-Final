@@ -26,7 +26,7 @@ chan3.volume = 0;
 chan4.volume = 0;
 
 harmonySelector.addEventListener('click', start);
-chaosSelector.addEventListener('click', start2);
+chaosSelector.addEventListener('click', startChaos);
 
 function Audio_src(trackNum){
   this.chan1 = chan1;
@@ -38,38 +38,34 @@ function Audio_src(trackNum){
 for(var i = 1; i < 5; i++) new Audio_src(i);
 //Harmony Random
 function setRandomA() {
-  console.log('random chan1');
   do {
     var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
-    console.log(indexRandom);
+
   } while (compare === indexRandom);
   chan1.setAttribute('src', Audio_src.all[indexRandom].harmonyPath);
   return compare = indexRandom;
 }
 function setRandomB() {
-  console.log('random chan2');
   do {
     var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
-    console.log(indexRandom);
+
   } while (compare === indexRandom);
   chan2.setAttribute('src', Audio_src.all[indexRandom].harmonyPath);
   return compare = indexRandom;
 }
 //Chaos Random
 function setRandomC() {
-  console.log('random chan3');
   do {
     var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
-    console.log(indexRandom);
+
   } while (compare2 === indexRandom);
   chan3.setAttribute('src', Audio_src.all[indexRandom].chaosPath);
   return compare2 = indexRandom;
 }
 function setRandomD() {
-  console.log('random chan4');
   do {
     var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
-    console.log(indexRandom);
+
   } while (compare2 === indexRandom);
   chan4.setAttribute('src', Audio_src.all[indexRandom].chaosPath);
   return compare2 = indexRandom;
@@ -84,22 +80,26 @@ setInterval(function(){
   userVolume = parseFloat(slider.value);
   if(moodSelector === 'harmony'){
     if(userToggle === true) {
-      chan1.volume = userVolume;
-      chan2.volume = userVolume;
       if(flagCheck === 1) {
         channelAfade();
+        chan1.volume = userVolume;
       } else if (flagCheck === 2) {
         channelBfade();
+        chan2.volume = userVolume;
       }
     }
   } else if (moodSelector === 'chaos') {
-    if(flagCheck === 1) {
-      channelCfade();
-    } else if (flagCheck === 2) {
-      channelDfade();
+    if(userToggle === true) {
+      if(flagCheck === 1) {
+        channelCfade();
+        chan3.volume = userVolume;
+      } else if (flagCheck === 2) {
+        channelDfade();
+        chan4.volume = userVolume;
+      }
     }
   }
-}, 250);
+}, 1);
 
 
 //Harmony Section
@@ -109,7 +109,6 @@ function start () {
   var start = setInterval(function () {
     if(chan1.currentTime < 10 && chan1.volume !== userVolume) {
       chan1.volume += 0.001;
-      console.log(chan1.volume);
       if(chan1.volume > userVolume) {
         chan1.volume = userVolume;
       }
@@ -134,7 +133,6 @@ function channelAfade () {
       if(chan2.currentTime < 10 && chan2.volume !== volumeStore){
         chan1.volume -= 0.001;
         chan2.volume += 0.001;
-        console.log(chan2.volume);
         if(chan2.volume > volumeStore || chan1.volume < 0.001) {
           chan1.volume = 0;
           chan2.volume = volumeStore;
@@ -147,7 +145,6 @@ function channelAfade () {
       }
     }, 5);
   }
-  console.log(flagCheck+'FLAG');
   return flagCheck, userToggle;
 }
 
@@ -174,12 +171,11 @@ function channelBfade() {
       }
     }, 5);
   }
-  console.log(flagCheck+'FLAG');
   return flagCheck, userToggle;
 }
 
 //Chaos Section
-function start2 () {
+function startChaos () {
   chan3.play();
   moodSelector = 'chaos';
   var start = setInterval(function () {
@@ -191,48 +187,63 @@ function start2 () {
     }
     if(chan3.volume === userVolume || chan3.paused === true) {
       flagCheck = 1;
+      userToggle = true;
       clearInterval(start);
     }
   }, 5);
-  return flagCheck;
+  return flagCheck, moodSelector, userToggle;
 }
 
 function channelCfade () {
   if(chan3.currentTime > chan3.duration-10 && !chan3.ended) {
+    flagCheck = 2;
+    chan4.volume = 0;
     chan4.play();
+    userToggle = false;
+    var volumeStore = userVolume;
     var fade = setInterval(function(){
-      if(chan4.volume < userVolume){
+      if(chan4.currentTime < 10 && chan4.volume !== volumeStore){
         chan3.volume -= 0.001;
         chan4.volume += 0.001;
-      } else clearInterval(fade);
-    }, 30);
-    if(chan4.volume > userVolume) {
-      chan3.volume = 0;
-      chan4.volume = userVolume;
-      setRandomC();
-      flagCheck = 2;
-    }
-    return flagCheck;
+        if(chan4.volume > volumeStore || chan3.volume < 0.001) {
+          chan3.volume = 0;
+          chan4.volume = volumeStore;
+        }
+      }
+      if(chan4.volume === volumeStore) {
+        setRandomC();
+        userToggle = true;
+        clearInterval(fade);
+      }
+    }, 5);
   }
+  return flagCheck, userToggle;
 }
 
 function channelDfade() {
   if(chan4.currentTime > chan4.duration-10 && !chan4.ended) {
+    flagCheck = 1;
+    chan3.volume = 0;
     chan3.play();
+    userToggle = false;
+    var volumeStore = userVolume;
     var fade = setInterval(function(){
-      if(chan3.volume < userVolume){
+      if(chan3.currentTime < 10 && chan3.volume !== volumeStore){
         chan4.volume -= 0.001;
         chan3.volume += 0.001;
-      } else clearInterval(fade);
-    }, 30);
-    if(chan3.volume > userVolume) {
-      chan4.volume = 0;
-      chan3.volume = userVolume;
-      setRandomD();
-      flagCheck = 1;
-    }
+        if(chan3.volume > volumeStore || chan4.volume < 0.001) {
+          chan4.volume = 0;
+          chan3.volume = volumeStore;
+        }
+      }
+      if(chan3.volume === userVolume) {
+        setRandomD();
+        userToggle = true;
+        clearInterval(fade);
+      }
+    }, 5);
   }
-  return flagCheck;
+  return flagCheck, userToggle;
 }
 
 
