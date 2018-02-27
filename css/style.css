@@ -127,9 +127,27 @@ video:hover {
     transform: scale(1.2); 
 } 
 
+#sound-bar{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+}
+
+#volume {
+    -webkit-appearance: slider-vertical;
+    float: right;
+    height: 50px;
+    width: 50px;
+}
+
 #harmony p, #chaos p {
     display: inline-block;
     width: 300px;
+}
+
+footer {
+    height: 100px;
 }
 
 footer ul li{

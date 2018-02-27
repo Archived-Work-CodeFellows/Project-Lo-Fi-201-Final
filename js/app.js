@@ -6,6 +6,9 @@
 
 var harmonySelector = document.getElementById('harmonic');
 var chaosSelector = document.getElementById('chaotic');
+var slider = document.getElementById('volume');
+var userVolume = 0;
+var userToggle = false;
 var chan1 = document.getElementById('channelA');
 var chan2 = document.getElementById('channelB');
 var chan3 = document.getElementById('channelC');
@@ -15,7 +18,7 @@ var compare2 = null;
 Audio_src.all = [];
 var moodSelector = ' ';
 var flagCheck = 0;
-var userVolume = 0.96; //For algorithm purposes
+//var userVolume = 0.96; //For algorithm purposes
 
 chan1.volume = 0;
 chan2.volume = 0;
@@ -78,11 +81,16 @@ setRandomC();
 setRandomD();
 
 setInterval(function(){
+  userVolume = parseFloat(slider.value);
   if(moodSelector === 'harmony'){
-    if(flagCheck === 1) {
-      channelAfade();
-    } else if (flagCheck === 2) {
-      channelBfade();
+    if(userToggle === true) {
+      chan1.volume = userVolume;
+      chan2.volume = userVolume;
+      if(flagCheck === 1) {
+        channelAfade();
+      } else if (flagCheck === 2) {
+        channelBfade();
+      }
     }
   } else if (moodSelector === 'chaos') {
     if(flagCheck === 1) {
@@ -99,56 +107,75 @@ function start () {
   chan1.play();
   moodSelector = 'harmony';
   var start = setInterval(function () {
-    if(chan1.currentTime < 10 && chan1.volume !== 1) {
+    if(chan1.currentTime < 10 && chan1.volume !== userVolume) {
       chan1.volume += 0.001;
+      console.log(chan1.volume);
       if(chan1.volume > userVolume) {
-        chan1.volume = 1;
+        chan1.volume = userVolume;
       }
     }
-    if(chan1.volume === 1 || chan1.paused === true) {
+    if(chan1.volume === userVolume || chan1.paused === true) {
       flagCheck = 1;
+      userToggle = true;
       clearInterval(start);
     }
   }, 5);
-  return flagCheck, moodSelector;
+  return flagCheck, moodSelector, userToggle;
 }
 
 function channelAfade () {
   if(chan1.currentTime > chan1.duration-10 && !chan1.ended) {
+    flagCheck = 2;
+    chan2.volume = 0;
     chan2.play();
+    userToggle = false;
+    var volumeStore = userVolume;
     var fade = setInterval(function(){
-      if(chan2.volume < userVolume){
+      if(chan2.currentTime < 10 && chan2.volume !== volumeStore){
         chan1.volume -= 0.001;
         chan2.volume += 0.001;
-      } else clearInterval(fade);
-    }, 30);
-    if(chan2.volume > userVolume) {
-      chan1.volume = 0;
-      chan2.volume = 1;
-      setRandomA();
-      flagCheck = 2;
-    }
-    return flagCheck;
+        console.log(chan2.volume);
+        if(chan2.volume > volumeStore || chan1.volume < 0.001) {
+          chan1.volume = 0;
+          chan2.volume = volumeStore;
+        }
+      }
+      if(chan2.volume === volumeStore) {
+        setRandomA();
+        userToggle = true;
+        clearInterval(fade);
+      }
+    }, 5);
   }
+  console.log(flagCheck+'FLAG');
+  return flagCheck, userToggle;
 }
 
 function channelBfade() {
   if(chan2.currentTime > chan2.duration-10 && !chan2.ended) {
+    flagCheck = 1;
+    chan1.volume = 0;
     chan1.play();
+    userToggle = false;
+    var volumeStore = userVolume;
     var fade = setInterval(function(){
-      if(chan1.volume < userVolume){
+      if(chan1.currentTime < 10 && chan1.volume !== volumeStore){
         chan2.volume -= 0.001;
         chan1.volume += 0.001;
-      } else clearInterval(fade);
-    }, 30);
-    if(chan1.volume > userVolume) {
-      chan2.volume = 0;
-      chan1.volume = 1;
-      setRandomB();
-      flagCheck = 1;
-    }
+        if(chan1.volume > volumeStore || chan2.volume < 0.001) {
+          chan2.volume = 0;
+          chan1.volume = volumeStore;
+        }
+      }
+      if(chan1.volume === userVolume) {
+        setRandomB();
+        userToggle = true;
+        clearInterval(fade);
+      }
+    }, 5);
   }
-  return flagCheck;
+  console.log(flagCheck+'FLAG');
+  return flagCheck, userToggle;
 }
 
 //Chaos Section
@@ -156,13 +183,13 @@ function start2 () {
   chan3.play();
   moodSelector = 'chaos';
   var start = setInterval(function () {
-    if(chan3.currentTime < 10 && chan3.volume !== 1) {
+    if(chan3.currentTime < 10 && chan3.volume !== userVolume) {
       chan3.volume += 0.001;
       if(chan3.volume > userVolume) {
-        chan3.volume = 1;
+        chan3.volume = userVolume;
       }
     }
-    if(chan3.volume === 1 || chan3.paused === true) {
+    if(chan3.volume === userVolume || chan3.paused === true) {
       flagCheck = 1;
       clearInterval(start);
     }
@@ -181,7 +208,7 @@ function channelCfade () {
     }, 30);
     if(chan4.volume > userVolume) {
       chan3.volume = 0;
-      chan4.volume = 1;
+      chan4.volume = userVolume;
       setRandomC();
       flagCheck = 2;
     }
@@ -200,7 +227,7 @@ function channelDfade() {
     }, 30);
     if(chan3.volume > userVolume) {
       chan4.volume = 0;
-      chan3.volume = 1;
+      chan3.volume = userVolume;
       setRandomD();
       flagCheck = 1;
     }
