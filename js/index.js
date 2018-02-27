@@ -14,7 +14,8 @@ var playChaosBtn = document.getElementById('playChaos');
 var harmonyListItem = document.getElementById('harmonyListItem');
 var chaosListItem = document.getElementById('chaosListItem');
 
-playHarmonyBtn.addEventListener('click', function () {
+playHarmonyBtn.addEventListener('click', function (e) {
+  e.preventDefault();
   if (harmonyListItem.classList.contains('minimized')) {
     harmonyListItem.classList.toggle('minimized',false);
     harmonyListItem.classList.toggle('maximized',true);
@@ -25,7 +26,8 @@ playHarmonyBtn.addEventListener('click', function () {
   }
 });
 
-playChaosBtn.addEventListener('click', function () {
+playChaosBtn.addEventListener('click', function (e) {
+  e.preventDefault();
   if (chaosListItem.classList.contains('minimized')) {
     chaosListItem.classList.toggle('minimized',false);
     chaosListItem.classList.toggle('maximized',true);
