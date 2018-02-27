@@ -1,0 +1,94 @@
+@import 'style.css';
+#container {
+    padding-top: 700px;
+}
+
+.video-container {
+    height: 400px;
+    overflow: hidden;
+}
+
+#harmony,
+#chaos {
+    /* margin: 50px 0px 50px 100px; */
+    background: black;
+    margin-bottom: 800px;
+}
+
+#gallery {
+    width: 100%;
+    overflow: hidden;
+}
+
+#gallery li {
+    position: relative;
+    /* cursor: pointer; */
+}
+
+#gallery li .overlay {
+    opacity: 0.4;
+    background: #000;
+    display: blocK;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 8;
+}
+
+#gallery li .info {
+    position: relative;
+    width: 100%;
+    z-index: 999;
+    color: #fff;
+    display: block;
+    text-align: center;
+    padding: 30px 20px 20px;
+    box-sizing: border-box;
+}
+
+#gallery li .info h2 {
+    font-family: "Lustria", serif;
+    font-size: 30px;
+    line-height: 50px;
+}
+
+#gallery li .info p {
+    font-family: "Lato", sans-serif;
+    font-size: 18px;
+    line-height: 30px;
+    padding-bottom: 20px;
+}
+
+#gallery li .info .btn {
+    line-height: 30px;
+    display: inline-block;
+    padding: 0 10px;
+    border: 1px solid #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    font-family: "Lato", sans-serif;
+    margin-bottom: 20px;
+}
+
+#gallery li .info .description {
+    display: none;
+}
+
+#gallery li .bg-video video {
+    position: absolute;
+    top: 0;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.maximized {
+    height: 800px;
+}
+
+.minimized {
+    height: 100%;
+}
