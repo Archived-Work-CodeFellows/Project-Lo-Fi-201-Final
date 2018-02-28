@@ -4,8 +4,8 @@
 //event function for spacebar to play audio, switch between the two playing channels
 //needs local storage (For volume and selection)
 
-var harmonySelector = document.getElementById('harmonic');
-var chaosSelector = document.getElementById('chaotic');
+var harmonySelector = document.getElementById('playHarmony');
+var chaosSelector = document.getElementById('playChaos');
 var slider = document.getElementById('volume');
 var userVolume = 0;
 var userToggle = false;
