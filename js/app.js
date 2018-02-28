@@ -1,12 +1,12 @@
 'use strict';
 
-//build an audio constructor?
 //event function for spacebar to play audio, switch between the two playing channels
 //needs local storage (For volume and selection)
 
 var harmonySelector = document.getElementById('playHarmony');
 var chaosSelector = document.getElementById('playChaos');
 var slider = document.getElementById('volume');
+var playButton = document.getElementById('play');
 var userVolume = 0;
 var userToggle = false;
 var chan1 = document.getElementById('channelA');
@@ -15,6 +15,7 @@ var chan3 = document.getElementById('channelC');
 var chan4 = document.getElementById('channelD');
 var compare = null;
 var compare2 = null;
+var activeChannel = null;
 Audio_src.all = [];
 var moodSelector = ' ';
 var flagCheck = 0;
@@ -76,15 +77,23 @@ setRandomB();
 setRandomC();
 setRandomD();
 
+function playing() {
+  console.log(activeChannel);
+  if(activeChannel.paused === true) playButton.onclick = activeChannel.play();
+  else playButton.onclick = activeChannel.pause();
+}
+
 setInterval(function(){
   userVolume = parseFloat(slider.value);
   if(moodSelector === 'harmony'){
     if(userToggle === true) {
       if(flagCheck === 1) {
         channelAfade();
+        activeChannel = chan1;
         chan1.volume = userVolume;
       } else if (flagCheck === 2) {
         channelBfade();
+        activeChannel = chan2;
         chan2.volume = userVolume;
       }
     }
@@ -92,9 +101,11 @@ setInterval(function(){
     if(userToggle === true) {
       if(flagCheck === 1) {
         channelCfade();
+        activeChannel = chan3;
         chan3.volume = userVolume;
       } else if (flagCheck === 2) {
         channelDfade();
+        activeChannel = chan4;
         chan4.volume = userVolume;
       }
     }
@@ -119,12 +130,15 @@ function start () {
       clearInterval(start);
     }
   }, 5);
+  activeChannel = chan1;
+  playButton.addEventListener('click', playing);
   return flagCheck, moodSelector, userToggle;
 }
 
 function channelAfade () {
   if(chan1.currentTime > chan1.duration-10 && !chan1.ended) {
     flagCheck = 2;
+    playButton.removeEventListener('click', playing);
     chan2.volume = 0;
     chan2.play();
     userToggle = false;
@@ -141,6 +155,7 @@ function channelAfade () {
       if(chan2.volume === volumeStore) {
         setRandomA();
         userToggle = true;
+        playButton.addEventListener('click', playing);
         clearInterval(fade);
       }
     }, 5);
@@ -150,6 +165,7 @@ function channelAfade () {
 
 function channelBfade() {
   if(chan2.currentTime > chan2.duration-10 && !chan2.ended) {
+    playButton.removeEventListener('click', playing);
     flagCheck = 1;
     chan1.volume = 0;
     chan1.play();
@@ -167,6 +183,7 @@ function channelBfade() {
       if(chan1.volume === userVolume) {
         setRandomB();
         userToggle = true;
+        playButton.addEventListener('click', playing);
         clearInterval(fade);
       }
     }, 5);
@@ -191,12 +208,15 @@ function startChaos () {
       clearInterval(start);
     }
   }, 5);
+  activeChannel = chan3;
+  playButton.addEventListener('click', playing);
   return flagCheck, moodSelector, userToggle;
 }
 
 function channelCfade () {
   if(chan3.currentTime > chan3.duration-10 && !chan3.ended) {
     flagCheck = 2;
+    playButton.removeEventListener('click', playing);
     chan4.volume = 0;
     chan4.play();
     userToggle = false;
@@ -213,6 +233,7 @@ function channelCfade () {
       if(chan4.volume === volumeStore) {
         setRandomC();
         userToggle = true;
+        playButton.addEventListener('click', playing);
         clearInterval(fade);
       }
     }, 5);
@@ -222,6 +243,7 @@ function channelCfade () {
 
 function channelDfade() {
   if(chan4.currentTime > chan4.duration-10 && !chan4.ended) {
+    playButton.removeEventListener('click', playing);
     flagCheck = 1;
     chan3.volume = 0;
     chan3.play();
@@ -239,6 +261,7 @@ function channelDfade() {
       if(chan3.volume === userVolume) {
         setRandomD();
         userToggle = true;
+        playButton.addEventListener('click', playing);
         clearInterval(fade);
       }
     }, 5);
@@ -246,15 +269,6 @@ function channelDfade() {
   return flagCheck, userToggle;
 }
 
-
-
-
 document.body.onkeydown = function(event){
-
-  if(event.keyCode === 32 && flagCheck === 1) chan1.pause();
-  //if (event.keyCode === 32 && flagCheck === 1 && chan1.pause() === true) chan1.play();
-  if(event.keyCode === 32 && flagCheck === 2) chan2.pause();
-  //if (event.keyCode === 32 && flagCheck === 2 && chan2.pause() === true) chan2.play();
-
+  if(event.keyCode === 32) playButton.click();
 };
-
