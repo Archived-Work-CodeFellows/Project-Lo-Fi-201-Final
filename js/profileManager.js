@@ -179,31 +179,38 @@ document.getElementById('authenticateUser').addEventListener('submit', function 
 
 
 // Sign Up Modal management
-var signUpLink = document.getElementById('signUp');
 var signUpModal = document.getElementById('signUpModal');
-
-var signInLink = document.getElementById('signIn');
 var signInModal = document.getElementById('signInModal');
 
-signInLink.onclick = function () {
-  signInModal.style.display = 'block';
-};
-
-signUpLink.onclick = function () {
+document.getElementById('signUp').onclick = function () {
   signUpModal.style.display = 'block';
 };
 
-// Modal close
-var signInSpan = document.getElementById('signInClose');
-var signUpSpan = document.getElementById('signUpClose');
+// document.getElementById('signIn').onclick = function () {
+//   signInModal.style.display = 'block';
+// };
 
-signInSpan.onclick = function () {
+/* Set the width of the side navigation to 250px */
+document.getElementById('signIn').onclick = function () {
+  document.getElementById("modalSignIn").style.width = "400px";
+};
+
+/* Set the width of the side navigation to 0 */
+document.getElementById('closeButton').onclick = function () {
+  document.getElementById("modalSignIn").style.width = "0";
+};
+
+
+// Modal close
+document.getElementById('signInClose').onclick = function () {
   if (signInModal) {
     signInModal.style.display = 'none';
   }
 };
 
-signUpSpan.onclick = function () {
+
+
+document.getElementById('signUpClose').onclick = function () {
   if (signUpModal) {
     signUpModal.style.display = 'none';
   }

@@ -79,50 +79,64 @@
         </ul>
         <p>&copy 2018 Project Lo-Fi</p>
     </footer>
-    
+
     <div id="sound-bar">
         <input type="range" id="volume" orient="vertical" min="0" max="1" step="0.001">
         <input type="button" id="play">
         <audio id="channelA">
-                <source src="">
+            <source src="">
         </audio>
         <audio id="channelB">
-                <source src="">
+            <source src="">
         </audio>
         <audio id="channelC">
-                <source src="">
+            <source src="">
         </audio>
         <audio id="channelD">
-                <source src="">
+            <source src="">
         </audio>
     </div>
 
-    <div id="signInModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="signInClose" class="close">&times;</span>
-            <form id="signInForm" class="form">
-                <fieldset>
-                    <input id="emailAddress" class="form-input" type="email" name="emailAddress" placeholder="Email Address" maxlength="100" autofocus required>
-                    <input id="password" class="form-input" type="password" name="password" placeholder="Password" maxlength="100" required>
-                </fieldset>
-                <button id="authenticateUser" class="button" type="submit">
-                    Sign me in!
-                </button>
-            </form>
-        </div>
+
+
+
+    <div id="modalSignIn" class="sidenav">
+        <a id="closeButton" class="closeButton" onclick="closeNav()">&times;</a>
+        <form id="signInForm" class="form">
+            <fieldset>
+                <input id="emailAddress" class="form-input" type="email" name="emailAddress" placeholder="Email Address" maxlength="100"
+                    autofocus required>
+                <input id="password" class="form-input" type="password" name="password" placeholder="Password" maxlength="100" required>
+            </fieldset>
+            <button id="authenticateUser" class="button" type="submit">
+                Sign me in!
+            </button>
+        </form>
     </div>
 
+
+
+
+    <!-- <div id="signInModal" class="modal">
+        <div class="modal-content">
+            <span id="signInClose" class="close">&times;</span>
+
+        </div>
+    </div>
+ -->
     <div id="signUpModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <span id="signUpClose" class="close">&times;</span>
             <form id="signUpForm" class="form">
                 <fieldset>
-                    <input id="givenName" class="form-input" type="text" name="givenName" size="30" maxlength="100" placeholder="First Name" autofocus required>
+                    <input id="givenName" class="form-input" type="text" name="givenName" size="30" maxlength="100" placeholder="First Name"
+                        autofocus required>
 
-                    <input id="emailAddress" class="form-input" type="email" name="emailAddress" size="30" maxlength="100" placeholder="Email Address" required>
-                    <input id="password" class="form-input" type="password" name="password" size="30" maxlength="100" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    <input id="emailAddress" class="form-input" type="email" name="emailAddress" size="30" maxlength="100" placeholder="Email Address"
+                        required>
+                    <input id="password" class="form-input" type="password" name="password" size="30" maxlength="100" placeholder="Password"
+                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                         required>
 
                 </fieldset>
@@ -132,6 +146,10 @@
             </form>
         </div>
     </div>
+
+
+
+
 
     <!-- <script src="js/placeholder.js"></script> -->
     <script src="js/app.js"></script>
