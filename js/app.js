@@ -78,7 +78,6 @@ setRandomC();
 setRandomD();
 
 function playing() {
-  console.log(activeChannel);
   if(activeChannel.paused === true) playButton.onclick = activeChannel.play();
   else playButton.onclick = activeChannel.pause();
 }
@@ -117,6 +116,7 @@ setInterval(function(){
 function start () {
   chan1.play();
   moodSelector = 'harmony';
+  chan3.pause(), chan4.pause(), chan3.currentTime = 0, chan4.currentTime = 0;
   var start = setInterval(function () {
     if(chan1.currentTime < 10 && chan1.volume !== userVolume) {
       chan1.volume += 0.001;
@@ -194,6 +194,7 @@ function channelBfade() {
 //Chaos Section
 function startChaos () {
   chan3.play();
+  chan1.pause(), chan2.pause(), chan1.currentTime = 0, chan2.currentTime = 0;
   moodSelector = 'chaos';
   var start = setInterval(function () {
     if(chan3.currentTime < 10 && chan3.volume !== userVolume) {
