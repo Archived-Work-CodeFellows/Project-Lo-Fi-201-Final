@@ -1,5 +1,5 @@
 'use strict';
-// debugger;
+debugger;
 
 // Cognito init
 AWSCognito.config.region = 'us-west-2';
@@ -150,7 +150,8 @@ var authenticateUser = function (emailAddress, password) {
 
 };
 
-document.getElementById('createNewUser').addEventListener('click', function () {
+document.getElementById('createNewUser').addEventListener('submit', function (event) {
+  event.preventDefault();
   var form = document.querySelector('#signUpForm');
 
   var emailAddressValue = form.elements.emailAddress.value;
@@ -163,7 +164,9 @@ document.getElementById('createNewUser').addEventListener('click', function () {
 });
 
 
-document.getElementById('authenticateUser').addEventListener('click', function () {
+
+document.getElementById('authenticateUser').addEventListener('submit', function () {
+  event.preventDefault();
   var form = document.querySelector('#signInForm');
 
   var emailAddressValue = form.elements.emailAddress.value;
@@ -172,7 +175,6 @@ document.getElementById('authenticateUser').addEventListener('click', function (
   authenticateUser(emailAddressValue.toLowerCase(), passwordValue);
 
 });
-
 
 
 

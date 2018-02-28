@@ -100,16 +100,12 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span id="signInClose" class="close">&times;</span>
-            <form id="signInForm">
+            <form id="signInForm" class="form">
                 <fieldset>
-                    <legend>Sign In</legend>
-                    <label for="emailAddress">Email Address</label>
-                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
-
-                    <label for="password">Password</label>
-                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
+                    <input id="emailAddress" class="form-input" type="email" name="emailAddress" placeholder="Email Address" maxlength="100" autofocus required>
+                    <input id="password" class="form-input" type="password" name="password" placeholder="Password" maxlength="100" required>
                 </fieldset>
-                <button id="authenticateUser" class="button" type="button">
+                <button id="authenticateUser" class="button" type="submit">
                     Sign me in!
                 </button>
             </form>
@@ -120,22 +116,16 @@
         <!-- Modal content -->
         <div class="modal-content">
             <span id="signUpClose" class="close">&times;</span>
-            <form id="signUpForm">
+            <form id="signUpForm" class="form">
                 <fieldset>
-                    <legend>Let's get started</legend>
-                    <label for="givenName">First Name</label>
-                    <input id="givenName" type="text" name="givenName" size="30" maxlength="100" required>
+                    <input id="givenName" class="form-input" type="text" name="givenName" size="30" maxlength="100" placeholder="First Name" autofocus required>
 
-                    <label for="emailAddress">Email Address</label>
-                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
-
-                    <label for="password">Password</label>
-                    <input id="password" type="password" name="password" size="30" maxlength="100" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    <input id="emailAddress" class="form-input" type="email" name="emailAddress" size="30" maxlength="100" placeholder="Email Address" required>
+                    <input id="password" class="form-input" type="password" name="password" size="30" maxlength="100" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
                         required>
 
                 </fieldset>
-                <button id="createNewUser" class="button" type="button">
+                <button id="createNewUser" class="button" type="submit">
                     Sign me up!
                 </button>
             </form>
