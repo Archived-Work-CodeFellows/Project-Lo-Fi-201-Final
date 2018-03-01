@@ -200,8 +200,6 @@ document.getElementById('signOut').addEventListener('click', function () {
 });
 
 
-
-
 document.getElementById('myProfile').addEventListener('click', function () {
   window.location.href = 'pages/user-profile.html';
 });
