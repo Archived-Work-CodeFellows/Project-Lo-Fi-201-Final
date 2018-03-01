@@ -1,7 +1,8 @@
 'use strict';
-debugger;
+// debugger;
 
-// Cognito init
+// Cognito init. 
+// Requires aws-cognito-sdk.min.js and aws-sdk..min.js
 AWSCognito.config.region = 'us-west-2';
 
 var UserPoolId = 'us-west-2_ewXR0S9DV';
@@ -13,14 +14,7 @@ var poolData = {
 };
 var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
 
-function uuid() {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
-    var r = Math.random() * 16 | 0,
-      v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-  });
-}
-
+// IIFE to get check current sign in status and configure menu items
 (function isAuthenticated() {
 
   var data = {
@@ -31,10 +25,6 @@ function uuid() {
   var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(data);
   var cognitoUser = userPool.getCurrentUser();
 
-  var authStatus = document.getElementById('music-studio');
-  var statusElement = document.createElement('H1');
-  var statusText;
-
   if (cognitoUser !== null) {
     cognitoUser.getSession(function (err, session) {
       if (err) {
@@ -44,31 +34,23 @@ function uuid() {
       console.log('session validity: ' + session.isValid());
 
       if (session.isValid()) {
-        statusText = document.createTextNode('Welcome back. You are currently signed in.');
         document.getElementById('signOut').style.display = 'inline';
         document.getElementById('myProfile').style.display = 'inline';
       } else {
-        statusText = document.createTextNode('You are session is not valid. Please sign in again.');
         document.getElementById('signIn').style.display = 'inline';
         document.getElementById('signUp').style.display = 'inline';
       }
-
-
-
     });
   } else {
-    // statusText = document.createTextNode('Your are not signed in.');
-    // statusElement.appendChild(statusText);
-    // authStatus.appendChild(statusElement);
     document.getElementById('signIn').style.display = 'inline';
     document.getElementById('signUp').style.display = 'inline';
   }
-
 })();
 
 
-function signOut() {
 
+// A simple function to signout and reload the index page.
+function signOut() {
   var data = {
     UserPoolId: UserPoolId,
     ClientId: ClientId
@@ -79,14 +61,18 @@ function signOut() {
 
   if (cognitoUser !== null) {
     cognitoUser.signOut();
+    if (window.location.pathname.indexOf('/pages') > -1) {
+      window.location.href = '../index.html'; //on a real server this should be ~/ or similar
+    } else {
+      window.location.reload();
+    }
+  } else {
+    // this is an error. what are you doing?
   }
-
-  window.location.reload();
 }
 
-
+// Create a new user account in Cognito
 var newUser = function (emailAddress, password, givenName) {
-  // uses values from cognitoInit()
   var attributeList = [];
 
   var dataEmail = {
@@ -109,6 +95,7 @@ var newUser = function (emailAddress, password, givenName) {
       return;
     } else if (result) {
       var cognitoUser = result.user;
+      // prompt user to go to check email for account verification request.
       alert('user name is ' + cognitoUser.getUsername());
     } else {
       alert('what the deuce?');
@@ -116,14 +103,14 @@ var newUser = function (emailAddress, password, givenName) {
   });
 };
 
-
+// Authenticate a user with Cognito
 var authenticateUser = function (emailAddress, password) {
-  // uses values from cognitoInit()
 
   var authenticationData = {
     Username: emailAddress,
     Password: password,
   };
+
   var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
 
   var userData = {
@@ -136,8 +123,6 @@ var authenticateUser = function (emailAddress, password) {
   cognitoUser.authenticateUser(authenticationDetails, {
     onSuccess: function (result) {
       console.log('access token + ' + result.getAccessToken().getJwtToken());
-
-      /*Use the idToken for Logins Map when Federating User Pools with Cognito Identity or when passing through an Authorization Header to an API Gateway Authorizer*/
       console.log('idToken + ' + result.idToken.jwtToken);
       window.location.reload();
     },
@@ -145,11 +130,13 @@ var authenticateUser = function (emailAddress, password) {
     onFailure: function (err) {
       alert(err);
     },
-
   });
-
 };
 
+
+
+// Event Handlers
+// Sign Up Button
 document.getElementById('createNewUser').addEventListener('click', function (event) {
   event.preventDefault();
   var form = document.querySelector('#signUpForm');
@@ -158,13 +145,12 @@ document.getElementById('createNewUser').addEventListener('click', function (eve
   var passwordValue = form.elements.password.value;
   var givenNameValue = form.elements.givenName.value;
 
+  // newUser('813798@BEB.COM','P@ssw0rd','FDFDFD');
   newUser(emailAddressValue.toLowerCase(), passwordValue, givenNameValue);
-  // newUser('813798@beb.com','P@ssw0rd','FDFD');
-
 });
 
 
-
+// Sign In Button
 document.getElementById('authenticateUser').addEventListener('click', function () {
   event.preventDefault();
   var form = document.querySelector('#signInForm');
@@ -176,30 +162,36 @@ document.getElementById('authenticateUser').addEventListener('click', function (
 
 });
 
-// Sign Up Modal management
-document.getElementById('signUp').onclick = function () {
-  document.getElementById('modalSignUp').style.width = '500px';
-  document.getElementById('modalSignUp').style.height = '200px';
-};
-
-document.getElementById('signIn').onclick = function () {
-  document.getElementById('modalSignIn').style.width = '500px';
-  document.getElementById('modalSignIn').style.height = '150px';
-};
-
-document.getElementById('signInClose').onclick = function () {
-  document.getElementById('modalSignIn').style.width = '0';
-};
-
-document.getElementById('signUpClose').onclick = function () {
-  document.getElementById('modalSignUp').style.width = '0';
-};
-
+// Sign Out Link
 document.getElementById('signOut').addEventListener('click', function () {
   signOut();
 });
 
 
+// Sign In/Up Modal Events
+document.getElementById('signUp').addEventListener('click', function () {
+  document.getElementById('modalSignUp').style.width = '500px';
+  document.getElementById('modalSignUp').style.height = '200px';
+});
+
+document.getElementById('signIn').addEventListener('click', function () {
+  document.getElementById('modalSignIn').style.width = '500px';
+  document.getElementById('modalSignIn').style.height = '150px';
+});
+
+document.getElementById('signInClose').addEventListener('click', function () {
+  document.getElementById('modalSignIn').style.width = '0';
+});
+
+document.getElementById('signUpClose').addEventListener('click', function () {
+  document.getElementById('modalSignUp').style.width = '0';
+});
+
+// My Profile Link
 document.getElementById('myProfile').addEventListener('click', function () {
-  window.location.href = 'pages/user-profile.html';
+  if (window.location.pathname.indexOf('/index.html') > -1) {
+    window.location.href = 'pages/user-profile.html';
+  } else {
+    window.location.href = 'user-profile.html';
+  }
 });
