@@ -158,5 +158,8 @@ function channelBfade() {
 }
 
 document.body.onkeydown = function(event){
-  if(event.keyCode === 32) playButton.click();
+  if(event.keyCode === 32) {
+    event.preventDefault();
+    playButton.click();
+  }
 };

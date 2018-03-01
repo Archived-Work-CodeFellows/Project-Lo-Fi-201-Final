@@ -77,17 +77,46 @@ nav ul li:hover {
 }
 
 #volume {
-    -webkit-appearance: slider-vertical;
+    -webkit-appearance: none;
+    transform: rotate(-90deg);
+    margin-top: 20px;
+    margin-right: 50px;
     float: right;
-    height: 50px;
-    width: 50px;
+    height: 10px;
+    width: 40px;
+    border-radius: 5px;
+    outline: none;
+}
+
+#volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background:#AD7B67;
 }
 
 #play {
     background-size: 100px 45px;
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 40px;
+    outline: none;
+    border: none; 
     background-image: url('../img/play-pause.png');
+    background-position: 0 46%;
+    background-color: green;
+    border-radius: 50%;
+    margin-left: 50px;
+    margin-bottom: 5px;
+    transition: color 1s ease 0s;
+}
+#play:hover {
+    transition: color 1s ease 0s;
+    background-color:#AD7B67;
+}
+
+#play:active {
+    background-color: hotpink;
 }
 
 #harmony p, #chaos p {
@@ -96,16 +125,37 @@ nav ul li:hover {
 }
 
 footer {
-    height: 100px;
+    height: 115px;
+    background-color: #243542;
+    text-align: center;
 }
 
 footer ul li {
-    padding: 0px 100px 0px 100px;
+    padding: 10px 50px 0px 50px;
+    color: #AD7B67;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+
+footer ul li:hover {
+    transition: color 0.4s ease 0s;
 }
 
 footer p {
-    color: #AD7B67;
+    padding-top: 15px;
+    color: rgb(155, 110, 93);
     text-align: center;
+}
+
+a{
+    color: #AD7B67;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #B7CBBF;
+    transition: color 0.4s ease 0s;
 }
 
 .hide {
