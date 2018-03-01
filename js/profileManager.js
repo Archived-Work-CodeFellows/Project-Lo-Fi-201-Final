@@ -96,7 +96,8 @@ var newUser = function (emailAddress, password, givenName) {
     } else if (result) {
       var cognitoUser = result.user;
       // prompt user to go to check email for account verification request.
-      alert('user name is ' + cognitoUser.getUsername());
+      alert('Your user name is ' + cognitoUser.getUsername() + '\n\nPlease check your email and verify your account before attempting to sign-in. Thx!');
+      window.location.reload();
     } else {
       alert('what the deuce?');
     }
