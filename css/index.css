@@ -35,13 +35,13 @@
     top: 0;
     left: 0;
     position: absolute;
-    z-index: 8;
+    z-index: 2
 }
 
 #gallery li .info {
     position: relative;
     width: 100%;
-    z-index: 999;
+    z-index: 3;
     color: #fff;
     display: block;
     text-align: center;

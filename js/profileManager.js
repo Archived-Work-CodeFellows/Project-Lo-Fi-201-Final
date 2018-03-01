@@ -1,5 +1,5 @@
 'use strict';
-// debugger;
+debugger;
 
 // Cognito init
 AWSCognito.config.region = 'us-west-2';
@@ -150,7 +150,8 @@ var authenticateUser = function (emailAddress, password) {
 
 };
 
-document.getElementById('createNewUser').addEventListener('click', function () {
+document.getElementById('createNewUser').addEventListener('click', function (event) {
+  event.preventDefault();
   var form = document.querySelector('#signUpForm');
 
   var emailAddressValue = form.elements.emailAddress.value;
@@ -163,7 +164,9 @@ document.getElementById('createNewUser').addEventListener('click', function () {
 });
 
 
+
 document.getElementById('authenticateUser').addEventListener('click', function () {
+  event.preventDefault();
   var form = document.querySelector('#signInForm');
 
   var emailAddressValue = form.elements.emailAddress.value;
@@ -173,53 +176,30 @@ document.getElementById('authenticateUser').addEventListener('click', function (
 
 });
 
-
-
-
 // Sign Up Modal management
-var signUpLink = document.getElementById('signUp');
-var signUpModal = document.getElementById('signUpModal');
-
-var signInLink = document.getElementById('signIn');
-var signInModal = document.getElementById('signInModal');
-
-signInLink.onclick = function () {
-  signInModal.style.display = 'block';
+document.getElementById('signUp').onclick = function () {
+  document.getElementById('modalSignUp').style.width = '500px';
+  document.getElementById('modalSignUp').style.height = '200px';
 };
 
-signUpLink.onclick = function () {
-  signUpModal.style.display = 'block';
+document.getElementById('signIn').onclick = function () {
+  document.getElementById('modalSignIn').style.width = '500px';
+  document.getElementById('modalSignIn').style.height = '150px';
 };
 
-// Modal close
-var signInSpan = document.getElementById('signInClose');
-var signUpSpan = document.getElementById('signUpClose');
-
-signInSpan.onclick = function () {
-  if (signInModal) {
-    signInModal.style.display = 'none';
-  }
+document.getElementById('signInClose').onclick = function () {
+  document.getElementById('modalSignIn').style.width = '0';
 };
 
-signUpSpan.onclick = function () {
-  if (signUpModal) {
-    signUpModal.style.display = 'none';
-  }
-};
-
-window.onclick = function (event) {
-  if (event.target === signInModal) {
-    signInModal.style.display = 'none';
-  } else if (event.target === signUpModal) {
-    signUpModal.style.display = 'none';
-  }
+document.getElementById('signUpClose').onclick = function () {
+  document.getElementById('modalSignUp').style.width = '0';
 };
 
 document.getElementById('signOut').addEventListener('click', function () {
   signOut();
 });
 
+
 document.getElementById('myProfile').addEventListener('click', function () {
   window.location.href = 'pages/user-profile.html';
 });
-
