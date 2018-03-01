@@ -63,14 +63,8 @@
                 </li>
             </ul>
         </div>
-
-
-
-        <!-- May put comment section here: -->
-        <!-- <div id="before-footer">
-    </div> -->
-
     </main>
+
     <footer>
         <ul>
             <li>
@@ -83,53 +77,37 @@
         <p>&copy 2018 Project Lo-Fi</p>
     </footer>
 
-    <div id="signInModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="signInClose" class="close">&times;</span>
-            <form id="signInForm">
-                <fieldset>
-                    <legend>Sign In</legend>
-                    <label for="emailAddress">Email Address</label>
-                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
 
-                    <label for="password">Password</label>
-                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
-                </fieldset>
-                <button id="authenticateUser" class="button" type="button">
-                    Sign me in!
-                </button>
-            </form>
-        </div>
+    <div id="modalSignIn" class="sidenav">
+        <span id="signInClose" class="closeX">&times;</span>
+        <form id="signInForm" class="form">
+            <fieldset>
+                <input id="emailAddress" class="form-input" type="email" name="emailAddress" placeholder="Email Address" maxlength="100"
+                    autofocus required>
+                <input id="password" class="form-input" type="password" name="password" placeholder="Password" maxlength="100" required>
+            </fieldset>
+            <button id="authenticateUser" class="signInOutButton" type="button">
+                Sign me in!
+            </button>
+        </form>
     </div>
-
-    <div id="signUpModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="signUpClose" class="close">&times;</span>
-            <form id="signUpForm">
-                <fieldset>
-                    <legend>Let's get started</legend>
-                    <label for="givenName">First Name</label>
-                    <input id="givenName" type="text" name="givenName" size="30" maxlength="100" required>
-
-                    <label for="emailAddress">Email Address</label>
-                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
-
-                    <label for="password">Password</label>
-                    <input id="password" type="password" name="password" size="30" maxlength="100" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        required>
-
-                </fieldset>
-                <button id="createNewUser" class="button" type="button">
-                    Sign me up!
-                </button>
-            </form>
-        </div>
+    <div id="modalSignUp" class="sidenav">
+        <span id="signUpClose" class="closeX">&times;</span>
+        <form id="signUpForm" class="form">
+            <fieldset>
+                <input id="givenName" class="form-input" type="text" name="givenName" maxlength="100" placeholder="First Name" autofocus
+                    required>
+                <input id="emailAddress" class="form-input" type="email" name="emailAddress" maxlength="100" placeholder="Email Address"
+                    required>
+                <input id="password" class="form-input" type="password" name="password" maxlength="100" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    required>
+            </fieldset>
+            <button id="createNewUser" class="signInOutButton" type="button">
+                Sign me up!
+            </button>
+        </form>
     </div>
-
-
 
     <script src="../js/about.js"></script>
     <script src="../js/profileManager.js"></script>
