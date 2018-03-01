@@ -97,60 +97,36 @@
         </audio>
     </div>
 
-
-
-
     <div id="modalSignIn" class="sidenav">
-        <a id="closeButton" class="closeButton" onclick="closeNav()">&times;</a>
+        <span id="signInClose" class="closeX">&times;</span>
         <form id="signInForm" class="form">
             <fieldset>
                 <input id="emailAddress" class="form-input" type="email" name="emailAddress" placeholder="Email Address" maxlength="100"
                     autofocus required>
                 <input id="password" class="form-input" type="password" name="password" placeholder="Password" maxlength="100" required>
             </fieldset>
-            <button id="authenticateUser" class="button" type="submit">
+            <button id="authenticateUser" class="signInOutButton" type="button">
                 Sign me in!
             </button>
         </form>
     </div>
-
-
-
-
-    <!-- <div id="signInModal" class="modal">
-        <div class="modal-content">
-            <span id="signInClose" class="close">&times;</span>
-
-        </div>
+    <div id="modalSignUp" class="sidenav">
+        <span id="signUpClose" class="closeX">&times;</span>
+        <form id="signUpForm" class="form">
+            <fieldset>
+                <input id="givenName" class="form-input" type="text" name="givenName" maxlength="100" placeholder="First Name" autofocus
+                    required>
+                <input id="emailAddress" class="form-input" type="email" name="emailAddress" maxlength="100" placeholder="Email Address"
+                    required>
+                <input id="password" class="form-input" type="password" name="password" maxlength="100" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                    required>
+            </fieldset>
+            <button id="createNewUser" class="signInOutButton" type="button">
+                Sign me up!
+            </button>
+        </form>
     </div>
- -->
-    <div id="signUpModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-            <span id="signUpClose" class="close">&times;</span>
-            <form id="signUpForm" class="form">
-                <fieldset>
-                    <input id="givenName" class="form-input" type="text" name="givenName" size="30" maxlength="100" placeholder="First Name"
-                        autofocus required>
-
-                    <input id="emailAddress" class="form-input" type="email" name="emailAddress" size="30" maxlength="100" placeholder="Email Address"
-                        required>
-                    <input id="password" class="form-input" type="password" name="password" size="30" maxlength="100" placeholder="Password"
-                        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        required>
-
-                </fieldset>
-                <button id="createNewUser" class="button" type="submit">
-                    Sign me up!
-                </button>
-            </form>
-        </div>
-    </div>
-
-
-
-
-
     <!-- <script src="js/placeholder.js"></script> -->
     <script src="js/app.js"></script>
     <script src="js/profileManager.js"></script>

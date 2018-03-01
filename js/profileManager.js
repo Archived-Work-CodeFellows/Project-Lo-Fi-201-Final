@@ -150,7 +150,7 @@ var authenticateUser = function (emailAddress, password) {
 
 };
 
-document.getElementById('createNewUser').addEventListener('submit', function (event) {
+document.getElementById('createNewUser').addEventListener('click', function (event) {
   event.preventDefault();
   var form = document.querySelector('#signUpForm');
 
@@ -165,7 +165,7 @@ document.getElementById('createNewUser').addEventListener('submit', function (ev
 
 
 
-document.getElementById('authenticateUser').addEventListener('submit', function () {
+document.getElementById('authenticateUser').addEventListener('click', function () {
   event.preventDefault();
   var form = document.querySelector('#signInForm');
 
@@ -176,59 +176,32 @@ document.getElementById('authenticateUser').addEventListener('submit', function 
 
 });
 
-
-
 // Sign Up Modal management
-var signUpModal = document.getElementById('signUpModal');
-var signInModal = document.getElementById('signInModal');
-
 document.getElementById('signUp').onclick = function () {
-  signUpModal.style.display = 'block';
+  document.getElementById('modalSignUp').style.width = '500px';
+  document.getElementById('modalSignUp').style.height = '200px';
 };
 
-// document.getElementById('signIn').onclick = function () {
-//   signInModal.style.display = 'block';
-// };
-
-/* Set the width of the side navigation to 250px */
 document.getElementById('signIn').onclick = function () {
-  document.getElementById("modalSignIn").style.width = "400px";
+  document.getElementById('modalSignIn').style.width = '500px';
+  document.getElementById('modalSignIn').style.height = '150px';
 };
 
-/* Set the width of the side navigation to 0 */
-document.getElementById('closeButton').onclick = function () {
-  document.getElementById("modalSignIn").style.width = "0";
-};
-
-
-// Modal close
 document.getElementById('signInClose').onclick = function () {
-  if (signInModal) {
-    signInModal.style.display = 'none';
-  }
+  document.getElementById('modalSignIn').style.width = '0';
 };
-
-
 
 document.getElementById('signUpClose').onclick = function () {
-  if (signUpModal) {
-    signUpModal.style.display = 'none';
-  }
-};
-
-window.onclick = function (event) {
-  if (event.target === signInModal) {
-    signInModal.style.display = 'none';
-  } else if (event.target === signUpModal) {
-    signUpModal.style.display = 'none';
-  }
+  document.getElementById('modalSignUp').style.width = '0';
 };
 
 document.getElementById('signOut').addEventListener('click', function () {
   signOut();
 });
 
+
+
+
 document.getElementById('myProfile').addEventListener('click', function () {
   window.location.href = 'pages/user-profile.html';
 });
-

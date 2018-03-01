@@ -1,7 +1,6 @@
-@import 'reset.css';
+/* @import 'reset.css'; */
 
-/* The Modal (background) */
-.modal {
+/* .modal {
     display: none;
     position: fixed; 
     z-index: 1; 
@@ -13,88 +12,110 @@
     overflow: auto; 
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4);
-}
+} */
 
-/* Modal Content */
+/* Modal Content
 .modal-content {
     background-color: #798d8e;
     margin: auto;
     padding: 20px;
     border: 1px solid black;
-    /* width: 100%; */
     text-align: center;
-}
+} */
 
-/* The Close Button */
+/* 
 .close {
     color: #aaaaaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
-}
+} */
 
-.close:hover,
+/* .close:hover,
 .close:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;
-}
-
-.form {
-    width: 100%;
-}
-.form-input {
-    font-size: 1em;
-}
-
+} */
 
 /* The side navigation menu */
+
+
 .sidenav {
     /* height: 100%;  */
-    height: 75px;
-    width: 0; /* 0 width - change this with JavaScript */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Stay on top */
-    top: 0; /* Stay at the top */
+    height: 120px;
+    width: 0;
+    /* Starting width, reset in JS */
+    position: fixed;
+    z-index: 1100;
+    top: 0;
     right: 0;
-    background-color: rgb(0, 0, 0); /* Black*/
-    overflow-x: hidden; /* Disable horizontal scroll */
-    padding-top: 0px; 
-    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+    background-color: #b9a395;
+    overflow: hidden;
+    /* padding: 10px 10px 10px 10px;  */
+    transition: 0.5s;
+    /* 0.5 second transition effect to slide in the sidenav */
 }
 
-/* The navigation menu links */
-.sidenav a {
+/* .sidenav a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
     color: #818181;
     display: block;
     transition: 0.3s;
-}
+} */
 
 /* When you mouse over the navigation links, change their color */
+
+
+.closeX {
+    font-size: 3em;
+    /* padding: 3px 3px 3px 3px; */
+    /* margin: 3px 3px 3px 3px; */
+    float: left;
+}
+
+.closeX:hover {
+    font-size: 3.3em;
+    transition: 0.2s;    
+}
+
 .sidenav a:hover {
     color: #f1f1f1;
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav .closeButton {
-    position: absolute;
-    top: 0;
-    right: 25px;
-    font-size: 36px;
-    margin-left: 50px;
+
+.sidenav .signInOutButton {
+    font-size: 1.5em;
 }
 
-/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
+.form {
+    width: 400px;
+    margin: 10px 10px 10px 10px;
+    text-align: center;
+}
+
+.form-input {
+    font-size: 1.0em;
+    width: 300px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.form button {
+    margin: 10px;
+    width: 200px;
 }
 
 /* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
 @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
+    .sidenav {
+        padding-top: 15px;
+    }
+    .sidenav a {
+        font-size: 18px;
+    }
 }
