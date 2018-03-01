@@ -1,7 +1,5 @@
 'use strict';
 
-//needs local storage (For volume and selection)
-
 var harmonySelector = document.getElementById('playHarmony');
 var chaosSelector = document.getElementById('playChaos');
 var slider = document.getElementById('volume');
@@ -34,7 +32,6 @@ function Audio_src(trackNum){
 function setRandom() {
   do {
     var indexRandom = Math.floor(Math.random()*Audio_src.all.length);
-    console.log('dupes');
   } while (compare === indexRandom);
   return compare = indexRandom;
 }
@@ -52,8 +49,13 @@ function initialize() {
 initialize();
 
 function playing() {
-  if(activeChannel.paused === true) playButton.onclick = activeChannel.play();
-  else playButton.onclick = activeChannel.pause();
+  if(activeChannel.paused === true) {
+    playButton.onclick = activeChannel.play();
+    playButton.style.backgroundPositionX = '0%';
+  } else {
+    playButton.onclick = activeChannel.pause();
+    playButton.style.backgroundPositionX = '99%';
+  }
 }
 
 setInterval(function(){
@@ -73,7 +75,6 @@ setInterval(function(){
 
 function start(selection) {
   moodSelector = selection;
-  console.log(moodSelector);
   if(moodSelector === 'harmony') {
     mixer = [];
     mixer.push([chan1,chan2],[chan3,chan4]);
