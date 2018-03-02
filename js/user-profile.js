@@ -78,8 +78,8 @@ document.getElementById('home').addEventListener('click', function () {
   window.location.href = '../index.html';
 });
 
-document.getElementById('artists').addEventListener('click', function () {
-  window.location.href = 'artists.html';
+document.getElementById('contribute').addEventListener('click', function () {
+  window.location.href = 'contribute.html';
 });
 
 document.getElementById('updateUserObjectButton').addEventListener('click', function () {
