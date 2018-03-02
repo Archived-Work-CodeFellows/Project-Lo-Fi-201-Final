@@ -12,6 +12,10 @@
     margin: auto;
 }
 
+#music-studio {
+    height: 650px;
+}
+
 .about-cards {
     position: relative;
     width: 300px;
@@ -46,6 +50,7 @@
 }
 
 footer {
+    height: 70px;
     bottom: 0;
     position: fixed;
     width:100%;
