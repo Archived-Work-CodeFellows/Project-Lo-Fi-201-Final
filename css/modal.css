@@ -1,91 +1,36 @@
-/* @import 'reset.css'; */
-
-/* .modal {
-    display: none;
-    position: fixed; 
-    z-index: 1; 
-    padding-top: 140px;
-    left: 0;
-    top: 0;
-    width: 100%; 
-    height: 100%; 
-    overflow: auto; 
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
-} */
-
-/* Modal Content
-.modal-content {
-    background-color: #798d8e;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid black;
-    text-align: center;
-} */
-
-/* 
-.close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-} */
-
-/* .close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-} */
-
-/* The side navigation menu */
-
+body {
+    font-family: Lustria, Helvetica, sans-serif;
+}
 
 .sidenav {
-    /* height: 100%;  */
     height: 120px;
     width: 0;
-    /* Starting width, reset in JS */
     position: fixed;
     z-index: 1100;
     top: 0;
     right: 0;
     background-color: #b9a395;
+    background: linear-gradient(to bottom left, #b9a395, white);
     overflow: hidden;
-    /* padding: 10px 10px 10px 10px;  */
     transition: 0.5s;
-    /* 0.5 second transition effect to slide in the sidenav */
+    border-bottom-left-radius: 10px;
+    box-shadow: 0px 0px 12px 10px rgba(78, 78, 78, 0.2);
 }
-
-/* .sidenav a {
-    padding: 8px 8px 8px 32px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-} */
-
-/* When you mouse over the navigation links, change their color */
-
 
 .closeX {
     font-size: 3em;
-    /* padding: 3px 3px 3px 3px; */
-    /* margin: 3px 3px 3px 3px; */
     float: left;
 }
 
 .closeX:hover {
-    font-size: 3.3em;
-    transition: 0.2s;    
+    /* font-size: 3.3em; */
+    transition: 0.2s;
+    color: gray;
 }
 
 .sidenav a:hover {
     color: #f1f1f1;
 }
-
-/* Position and style the close button (top right corner) */
 
 .sidenav .signInOutButton {
     font-size: 1.5em;
@@ -102,20 +47,14 @@
     width: 300px;
     padding: 10px;
     display: inline-block;
+    margin: 3px;
+    box-shadow: inset 0 0 3px #000000;
 }
 
 .form button {
     margin: 10px;
     width: 200px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
-
-@media screen and (max-height: 450px) {
-    .sidenav {
-        padding-top: 15px;
-    }
-    .sidenav a {
-        font-size: 18px;
-    }
+    box-shadow: 0px 0px 12px 4px rgba(78, 78, 78, 0.2);
+    border-radius: 4px 4px 4px 4px;
+    
 }

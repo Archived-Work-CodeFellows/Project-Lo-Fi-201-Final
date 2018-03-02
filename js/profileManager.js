@@ -172,12 +172,12 @@ document.getElementById('signOut').addEventListener('click', function () {
 // Sign In/Up Modal Events
 document.getElementById('signUp').addEventListener('click', function () {
   document.getElementById('modalSignUp').style.width = '500px';
-  document.getElementById('modalSignUp').style.height = '200px';
+  document.getElementById('modalSignUp').style.height = '220px';
 });
 
 document.getElementById('signIn').addEventListener('click', function () {
   document.getElementById('modalSignIn').style.width = '500px';
-  document.getElementById('modalSignIn').style.height = '150px';
+  document.getElementById('modalSignIn').style.height = '170px';
 });
 
 document.getElementById('signInClose').addEventListener('click', function () {
