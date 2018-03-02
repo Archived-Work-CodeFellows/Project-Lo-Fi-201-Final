@@ -10,6 +10,7 @@ body {
     top: 0;
     right: 0;
     background-color: #b9a395;
+    background: linear-gradient(to bottom left, #b9a395, white);
     overflow: hidden;
     transition: 0.5s;
     border-bottom-left-radius: 10px;
