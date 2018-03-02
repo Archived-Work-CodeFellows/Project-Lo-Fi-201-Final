@@ -5,8 +5,8 @@ document.getElementById('home').addEventListener('click', function () {
   window.location.href = 'index.html';
 });
 
-document.getElementById('artists').addEventListener('click', function () {
-  window.location.href = 'pages/artists.html';
+document.getElementById('contribute').addEventListener('click', function () {
+  window.location.href = 'pages/contribute.html';
 });
 
 var playHarmonyBtn = document.getElementById('playHarmony');
