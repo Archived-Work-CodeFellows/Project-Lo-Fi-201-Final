@@ -1,11 +1,11 @@
 # Project-Lo-Fi
-Generates random music files and creates lofi music for background sounds similar to white noise or rain websites for relaxing or studying.
+A website that allows users to pick background sounds to help aid in various situations like studying or meditation
+
+# Motivation
+A step into exploring tool development to allow users to experience new multi-media art, while allowing independent artists find exposure and growth within a community. 
 
 ## Built With
 HTML/CSS, JavaScript, AWS Cognito
-
-## Contributing
-Please read [Creating a Pull Request](https://help.github.com/articles/creating-a-pull-request/) for details on the process for submitting pull requests.
 
 ## Author
 David Johnson
