@@ -21,6 +21,10 @@
     background-color: beige;
 }
 
+#music-studio {
+    height: 650px;
+}
+
 footer {
     height: 70px;
     bottom: 0;
