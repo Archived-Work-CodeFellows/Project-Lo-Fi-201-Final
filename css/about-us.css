@@ -44,3 +44,9 @@
 .about-cards:hover .bio {
     opacity: 0.8;
 }
+
+footer {
+    bottom: 0;
+    position: fixed;
+    width:100%;
+}
