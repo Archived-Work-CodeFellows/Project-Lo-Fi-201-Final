@@ -1,31 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
+    
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" type="tab icon" href="img/tab-icon.jpg" />
-
-    <script src="js/aws-cognito-sdk.min.js"></script>
-    <script src="js/amazon-cognito-identity.min.js"></script>
-
-    <link rel="stylesheet" href="css/index.css">
-
+    <link rel="icon" type="tab icon" href="../img/tab-icon.jpg" />
+    
+    <script src="../js/aws-cognito-sdk.min.js"></script>
+    <script src="../js/amazon-cognito-identity.min.js"></script>
+    
+    <link rel="stylesheet" href="../css/index.css">
+    
     <title>Project Lo-Fi</title>
 </head>
 
 <body>
     <header>
         <div id="logo">
-            <img src="img/logo.jpg" alt="Lo-Fi logo">
+            <img src="../img/logo.jpg" alt="Lo-Fi logo">
             <h1>Project Lo-Fi</h1>
         </div>
 
         <nav>
-            <ul id="headerUl">
+            <ul>
                 <li id="home">Home</li>
-                <li id="artists">Artists</li>
+                <li id="contribute">Contribute</li>
                 <li id="signIn" class="hide">Sign In</li>
                 <li id="signUp" class="hide">Sign Up</li>
                 <li id="myProfile" class="hide">My Profile</li>
@@ -33,13 +33,39 @@
             </ul>
         </nav>
     </header>
-
-    <div id="music-studio"></div>
-
+    
+    <div id="submission">
+        <h1>Submission</h1>
+        <p>We've decided to simplify things and create one place where anyone can submit music for possible placement on the site.</p>
+        <div id="left-div">
+            <p>Choose your songs Organization</p>
+            <p></p>
+        </div>
+        <div id="center-div">
+            <p>Upload your song</p>
+            <p></p>
+        </div>
+        <div id="right-div">
+            <p>Submit</p>
+            <p></p>
+        </div>
+        
+        <h2>Submission Rules</h2>
+        <ul>
+            <li>Submissions are always open.</li>
+            <li>You may submit a <span>maximum</span> of 1 SONG per day.</li>
+            <li>SONG submissions should be an mp3 and/or ogg.</li>
+            <li>SONGS are reviewed weekly by our staff.</li>
+            <li><span>DO NOT</span> submit the same SONG within the same weekly cycle. <span>Duplicate</span> content will be deleted by our system.</li>
+            <li>Any attempts to SPAM our system will result in automatic disqualification and banned profiles.</li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
     <footer>
         <ul>
             <li>
-                <a href="pages/about-us.html">About</a>
+                <a href="../pages/about-us.html">About</a>
             </li>
             <li>Jobs</li>
             <li>Privacy Policy</li>
@@ -48,40 +74,56 @@
         <p>&copy 2018 Project Lo-Fi</p>
     </footer>
 
-    <div id="modalSignIn" class="sidenav">
-        <span id="signInClose" class="closeX">&times;</span>
-        <form id="signInForm" class="form">
-            <fieldset>
-                <input id="emailAddress" class="form-input" type="email" name="emailAddress" placeholder="Email Address" maxlength="100"
-                    autofocus required>
-                <input id="password" class="form-input" type="password" name="password" placeholder="Password" maxlength="100" required>
-            </fieldset>
-            <button id="authenticateUser" class="signInOutButton" type="button">
-                Sign me in!
-            </button>
-        </form>
-    </div>
-    <div id="modalSignUp" class="sidenav">
-        <span id="signUpClose" class="closeX">&times;</span>
-        <form id="signUpForm" class="form">
-            <fieldset>
-                <input id="givenName" class="form-input" type="text" name="givenName" maxlength="100" placeholder="First Name" autofocus
-                    required>
-                <input id="emailAddress" class="form-input" type="email" name="emailAddress" maxlength="100" placeholder="Email Address"
-                    required>
-                <input id="password" class="form-input" type="password" name="password" maxlength="100" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                    title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                    required>
-            </fieldset>
-            <button id="createNewUser" class="signInOutButton" type="button">
-                Sign me up!
-            </button>
-        </form>
+    <div id="signInModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span id="signInClose" class="close">&times;</span>
+            <form id="signInForm">
+                <fieldset>
+                    <legend>Sign In</legend>
+                    <label for="emailAddress">Email Address</label>
+                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
+
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" size="30" maxlength="100" required>
+                </fieldset>
+                <button id="authenticateUser" class="button" type="button">
+                    Sign me in!
+                </button>
+            </form>
+        </div>
     </div>
 
-    <script src="js/app.js"></script>
-    <script src="js/profileManager.js"></script>
-    <script src="js/index.js"></script>
+    <div id="signUpModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span id="signUpClose" class="close">&times;</span>
+            <form id="signUpForm">
+                <fieldset>
+                    <legend>Let's get started</legend>
+                    <label for="givenName">First Name</label>
+                    <input id="givenName" type="text" name="givenName" size="30" maxlength="100" required>
+
+                    <label for="emailAddress">Email Address</label>
+                    <input id="emailAddress" type="text" name="emailAddress" size="30" maxlength="100" required>
+
+                    <label for="password">Password</label>
+                    <input id="password" type="password" name="password" size="30" maxlength="100" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                        title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+                        required>
+
+                </fieldset>
+                <button id="createNewUser" class="button" type="button">
+                    Sign me up!
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/profileManager.js"></script>
+    <script src="../js/index.js"></script>
 </body>
 
 </html>
+
