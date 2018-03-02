@@ -45,6 +45,7 @@ nav ul li {
     color: #AD7B67;
     font-weight: 400;
     text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 nav ul li:hover {
@@ -139,6 +140,7 @@ footer ul li {
     display: inline-block;
     font-weight: 400;
     text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 footer ul li:hover {
