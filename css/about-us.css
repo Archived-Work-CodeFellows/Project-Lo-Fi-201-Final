@@ -8,8 +8,17 @@
 }
 
 #about-margin {
-    width: 64%;
-    margin: auto;
+    width: 50%;
+    margin: 0px auto;
+}
+
+#about-margin li {
+    margin: 0px 7px;
+}
+
+
+#about-margin li:last-child{
+    margin-right: 0px;
 }
 
 #music-studio {
@@ -48,6 +57,7 @@
 .about-cards:hover .bio {
     opacity: 0.8;
 }
+
 
 footer {
     height: 70px;
