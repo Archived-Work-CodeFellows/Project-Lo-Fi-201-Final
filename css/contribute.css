@@ -6,8 +6,8 @@ span {
 
 #submission {
     padding-top: 200px;
-    padding-left: 50px;
-    height: 700px;
+    padding-left: 300px;
+    height: 1000px;
     background-image: url("../img/music-studio.jpg");
     background-size: cover;
     letter-spacing: 1px;
@@ -20,13 +20,13 @@ span {
 }
 
 #submission {
-    font-size: 15px;
-    line-height: 20px;
+    font-size: 20px;
+    line-height: 30px;
     color: white;
 }
 
 #left-div, #center-div, #right-div {
-    background: lightgray;
+    background: #20303c;
     border: 5px solid #B7CBBF;
     padding: 20px;
     margin: 20px;
