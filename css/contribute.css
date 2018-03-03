@@ -5,18 +5,51 @@ span {
 }
 
 #submission {
-    padding-top: 150px;
-    padding-left: 20px;
-    height: 800px;
-    background: lightgray;
+    padding-top: 200px;
+    padding-left: 50px;
+    height: 700px;
+    background-image: url("../img/music-studio.jpg");
+    background-size: cover;
+    letter-spacing: 1px;
+}
+
+#submission img {
+    display:block;
+    margin:auto;
+    cursor: pointer;
+}
+
+#submission {
+    font-size: 15px;
+    line-height: 20px;
+    color: white;
 }
 
 #left-div, #center-div, #right-div {
-    background: white;
-    border: 1px solid black;
+    background: lightgray;
+    border: 5px solid #B7CBBF;
     padding: 20px;
     margin: 20px;
     display: inline-block;
+}
+
+#left-div h2, #center-div h2, #right-div h2 {
+    padding-top: 10px;
+}
+
+#left-div p, #center-div p, #right-div p {
+    width: 250px;
+    padding-top: 10px;
+}
+
+#submission h1, #submission h2 {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#submission li {
+    list-style-type: circle;
+    margin-left: 20px;
 }
 
 footer {
