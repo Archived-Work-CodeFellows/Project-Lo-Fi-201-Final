@@ -2,9 +2,8 @@
 #displayForValidUser {
     display: none;
     width: 100%;
-    height: 900px;
+    height: 950px;
     background-color: rgba(85, 85, 85, 0.6);
-    /* opacity: 0.6; */
     margin: 100px auto 0;
 }
 
@@ -14,9 +13,6 @@
     margin: 100px 100px auto;
     padding: 40px;
     height: 300px;
-    /* margin: auto; */
-    /* width: 50%; */
-    /* padding: 10px; */
     border: 1px solid black;
     float: left;
     background: linear-gradient(to bottom right, #b9a395, white);
@@ -49,25 +45,6 @@ button {
     margin: 10px;
     width: 200px;
     height: 30px;
-    /* box-shadow: 0px 0px 12px 2px rgba(78, 78, 78, 0.2); */
-    /* border-radius: 4px 4px 4px 4px; */
-    
-}
-
-
-
-/* form {
-    margin: 100px 0px 0px 200px;
-    
-}
-
-input {
-    display: block;
-    font-size: 1.5em;
-}
- */
-#music-studio {
-    height: 650px;
 }
 
 footer {

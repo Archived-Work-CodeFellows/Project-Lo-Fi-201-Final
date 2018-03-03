@@ -10,7 +10,6 @@
 
 #harmony,
 #chaos {
-    /* margin: 50px 0px 50px 100px; */
     background: black;
     margin-bottom: 800px;
 }
@@ -23,7 +22,6 @@
 #gallery li {
     position: relative;
     z-index: 6;
-    /* cursor: pointer; */
 }
 
 #gallery li .overlay {

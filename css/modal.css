@@ -23,7 +23,6 @@ body {
 }
 
 .closeX:hover {
-    /* font-size: 3.3em; */
     transition: 0.2s;
     color: gray;
 }
